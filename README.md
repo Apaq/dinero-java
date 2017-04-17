@@ -38,7 +38,7 @@ dinero:
 DineroExample.java
 
 ```java
-import com.previsto.billy.model.Contact;
+import com.previsto.dinero.model.Contact;
 
 @SpringBootApplication
 public class BillyExample {
