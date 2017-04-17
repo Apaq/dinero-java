@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "statusCode": 404,
+    "success": false
+  },
+  "errorMessage": "No `contact` record with id `hSAz8KBCTPudbq4mBrvvaw` was found.",
+  "errorCode": "RECORD_NOT_FOUND",
+  "helpUrl": "https://billysbilling.com/api"
+}

@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "statusCode": 501,
+    "success": false
+  },
+  "errorMessage": "Something happended on the server",
+  "errorCode": "INTERNAL_ERROR",
+  "helpUrl": "https://billysbilling.com/api"
+}

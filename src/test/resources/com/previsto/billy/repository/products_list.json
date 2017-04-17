@@ -1,0 +1,30 @@
+{
+  "meta": {
+    "statusCode": 200,
+    "success": true,
+    "paging": {
+      "page": 1,
+      "pageSize": 1000,
+      "pageCount": 1,
+      "total": 1
+    },
+    "time": 0.031423807144165
+  },
+  "products": [
+    {
+      "id": "ksSgZEGPQmGohQ9eWxVOoQ",
+      "organizationId": "07WgjDjARrWDUR0FAqEVEg",
+      "name": "Vinduespolering",
+      "description": "",
+      "accountId": "jIq5LqhoQm6fPS6xJx1Ctg",
+      "inventoryAccountId": null,
+      "productNo": "WC_PREVISTO",
+      "suppliersProductNo": "",
+      "salesTaxRulesetId": null,
+      "isArchived": false,
+      "isInInventory": false,
+      "imageId": null,
+      "imageUrl": null
+    }
+  ]
+}

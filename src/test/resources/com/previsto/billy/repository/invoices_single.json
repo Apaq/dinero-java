@@ -1,0 +1,74 @@
+{
+  "meta": {
+    "statusCode": 200,
+    "success": true,
+    "time": 0.032207012176514
+  },
+  "invoice": {
+    "id": "cSHBqWWITexZvQy29lqpYg",
+    "organizationId": "07WgjDjARrWDUR0FAqEVEg",
+    "type": "invoice",
+    "createdTime": "2016-12-23T08:16:46",
+    "approvedTime": null,
+    "contactId": "DDAc0RmLQyelyZrv55JJKg",
+    "attContactPersonId": null,
+    "entryDate": "2016-12-23",
+    "paymentTermsMode": "netEndOfMonth",
+    "paymentTermsDays": 7,
+    "dueDate": "2017-01-07",
+    "state": "draft",
+    "sentState": "unsent",
+    "invoiceNo": null,
+    "taxMode": "incl",
+    "amount": 374.4,
+    "tax": 93.6,
+    "currencyId": "DKK",
+    "exchangeRate": 1,
+    "balance": 468,
+    "isPaid": false,
+    "creditedInvoiceId": null,
+    "contactMessage": "Husk at betale",
+    "lineDescription": "Vinduespudsning: Alt udevendigt, Vinduespudsning: Alt inde",
+    "recurringInvoiceId": null,
+    "templateId": "f0782ec9-39a5-4aae-b18b-322820a35241",
+    "downloadUrl": "https://api.billysbilling.com/v2/downloads/invoices/cSHBqWWITexZvQy29lqpYg/07WgjDjARrWDUR0FAqEVEg/f633ff4e61288a1730eb20d0db83acd0ac8d03698e33f048f4/draft-invoice.pdf",
+    "lines": [
+      {
+        "id": "rJOYmHUfQBecodHXkZF8qQ",
+        "invoiceId": "cSHBqWWITexZvQy29lqpYg",
+        "productId": "yb3MlJ6SQP2aG6VWU1CMfQ",
+        "description": "Alt udevendigt",
+        "quantity": 1,
+        "unitPrice": 123,
+        "amount": 123,
+        "tax": 24.6,
+        "taxRateId": "BHlRmdzLTQyTbw6n3MBBqw",
+        "discountText": null,
+        "discountMode": null,
+        "discountValue": null,
+        "priority": 1
+      },
+      {
+        "id": "yY6cT6yDS9WvOcwzxRqh8A",
+        "invoiceId": "cSHBqWWITexZvQy29lqpYg",
+        "productId": "yb3MlJ6SQP2aG6VWU1CMfQ",
+        "description": "Alt inde",
+        "quantity": 1,
+        "unitPrice": 345,
+        "amount": 345,
+        "tax": 69,
+        "taxRateId": "BHlRmdzLTQyTbw6n3MBBqw",
+        "discountText": null,
+        "discountMode": null,
+        "discountValue": null,
+        "priority": 2
+      }
+    ],
+    "orderNo": null,
+    "paymentMethods": [
+      {
+        "paymentMethodId": "a8da874c-3b65-422f-a166-e5f3516088b1"
+      }
+    ]
+  }
+}

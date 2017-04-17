@@ -1,0 +1,28 @@
+{
+  "meta": {
+    "statusCode": 200,
+    "success": true,
+    "time": 0.029883146286011
+  },
+  "account": {
+    "id": "LpR6sv4MREW1aMlJHtASOg",
+    "organizationId": "07WgjDjARrWDUR0FAqEVEg",
+    "name": "Afregnet moms",
+    "accountNo": 7210,
+    "description": "Momsafregningers beløb opbevares her efter du har indberettet til Skat, men inden du har betalt beløbet.",
+    "groupId": "gvlgDonjQFSgqCIJoqB5bw",
+    "natureId": "liability",
+    "systemRole": "salesTaxPayable",
+    "currencyId": "DKK",
+    "taxRateId": null,
+    "isPaymentEnabled": false,
+    "isBankAccount": false,
+    "isArchived": false,
+    "bankId": null,
+    "bankName": null,
+    "bankRoutingNo": null,
+    "bankAccountNo": null,
+    "bankSwift": null,
+    "bankIban": null
+  }
+}

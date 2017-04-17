@@ -1,0 +1,22 @@
+{
+  "meta": {
+    "statusCode": 200,
+    "success": true,
+    "time": 0.020292997360229
+  },
+  "product": {
+    "id": "ksSgZEGPQmGohQ9eWxVOoQ",
+    "organizationId": "07WgjDjARrWDUR0FAqEVEg",
+    "name": "Vinduespolering",
+    "description": "",
+    "accountId": "jIq5LqhoQm6fPS6xJx1Ctg",
+    "inventoryAccountId": null,
+    "productNo": "WC_PREVISTO",
+    "suppliersProductNo": "",
+    "salesTaxRulesetId": null,
+    "isArchived": false,
+    "isInInventory": false,
+    "imageId": null,
+    "imageUrl": null
+  }
+}

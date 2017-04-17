@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "statusCode": 401,
+    "success": false
+  },
+  "errorMessage": "Request body should consist of a JSON document with an object as root.",
+  "errorCode": "INVALID_REQUEST_BODY",
+  "helpUrl": "https://billysbilling.com/api"
+}

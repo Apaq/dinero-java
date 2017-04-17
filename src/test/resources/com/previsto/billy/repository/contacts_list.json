@@ -1,0 +1,84 @@
+{
+  "meta": {
+    "statusCode": 200,
+    "success": true,
+    "paging": {
+      "page": 1,
+      "pageSize": 1000,
+      "pageCount": 1,
+      "total": 2
+    },
+    "time": 0.029356002807617
+  },
+  "contacts": [
+    {
+      "id": "EkoYx6TBSPC7rixfDCaM1Q",
+      "type": "company",
+      "organizationId": "07WgjDjARrWDUR0FAqEVEg",
+      "createdTime": "2016-12-23T08:06:07",
+      "name": "Apaq",
+      "countryId": "DK",
+      "street": "Fyensgade 16, 1. th",
+      "cityId": null,
+      "cityText": "Aalborg",
+      "stateId": null,
+      "stateText": "",
+      "zipcodeId": null,
+      "zipcodeText": "9000",
+      "contactNo": "",
+      "phone": "",
+      "fax": "",
+      "currencyId": null,
+      "registrationNo": "29331847",
+      "ean": "",
+      "localeId": null,
+      "isCustomer": true,
+      "isSupplier": true,
+      "paymentTermsMode": null,
+      "paymentTermsDays": null,
+      "accessCode": "nKSj1EvOsaNuoDHu",
+      "emailAttachmentDeliveryMode": null,
+      "isArchived": false,
+      "isSalesTaxExempt": false
+    },
+    {
+      "id": "DDAc0RmLQyelyZrv55JJKg",
+      "type": "person",
+      "organizationId": "07WgjDjARrWDUR0FAqEVEg",
+      "createdTime": "2016-12-23T08:06:40",
+      "name": "Hannah Krog",
+      "countryId": "DK",
+      "street": "Bornholmsgade 57",
+      "cityId": "dk_aalborg",
+      "cityText": "",
+      "stateId": null,
+      "stateText": "",
+      "zipcodeId": null,
+      "zipcodeText": "9000",
+      "contactNo": "",
+      "phone": "",
+      "fax": "",
+      "currencyId": null,
+      "registrationNo": "",
+      "ean": "",
+      "localeId": null,
+      "isCustomer": true,
+      "isSupplier": true,
+      "paymentTermsMode": null,
+      "paymentTermsDays": null,
+      "accessCode": "1forbvx0IIvEJDh6",
+      "emailAttachmentDeliveryMode": null,
+      "isArchived": false,
+      "isSalesTaxExempt": false
+    }
+  ],
+  "cities": [
+    {
+      "id": "dk_aalborg",
+      "name": "Aalborg",
+      "county": "",
+      "stateId": null,
+      "countryId": "DK"
+    }
+  ]
+}
