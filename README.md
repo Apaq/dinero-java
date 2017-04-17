@@ -1,6 +1,6 @@
-# Billy Java Bindings 
+# Dinero Java Bindings 
 
-You can sign up for a Billy account at https://billy.dk.
+You can sign up for a Dinero account at https://dinero.dk.
 
 Requirements
 ============
@@ -17,7 +17,7 @@ Add this dependency to your project's POM:
 ```xml
 <dependency>
   <groupId>com.previsto</groupId>
-  <artifactId>billy.java</artifactId>
+  <artifactId>dinero-java</artifactId>
   <version>1.0.0-SNAPSHOT</version>
 </dependency>
 ```
@@ -30,12 +30,12 @@ Usage in Spring Boot
 
 application.yml
 ```yml
-billy:
+dinero:
   serviceUrl: http://billy.dk/api
   apiKey: YOUR_API_KEY
 ```
 
-BillyExample.java
+DineroExample.java
 
 ```java
 import com.previsto.billy.model.Contact;
@@ -64,7 +64,7 @@ public class BillyExample {
 ```
 
 
-See [Test.java](https://github.com/Previsto/billy-java/blob/master/src/test/java/com/previsto/billy/Test.java) for more examples.
+See [Test.java](https://github.com/Previsto/dinero-java/blob/master/src/test/java/com/previsto/dinero/Test.java) for more examples.
 
 Testing
 =======
