@@ -32,6 +32,7 @@ public abstract class Resource<T extends Persistable<String>> {
         this.resourceName = resourceName;
         this.restTemplate = restTemplate;
         this.serviceUrl = serviceUrl;
+        this.clazz = clazz;
     }
 
     public List<T> findAll() {
@@ -107,7 +108,7 @@ public abstract class Resource<T extends Persistable<String>> {
             persistedEntity = entity;
         }
 
-        return persistedEntity;
+        return get(persistedEntity.getId());
     }
 
     protected URI buildUri() {

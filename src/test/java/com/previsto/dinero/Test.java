@@ -11,7 +11,7 @@ public class Test {
         
         DineroClient client = new DineroClient("Previsto",
                 "ZfnZyhqoc3B7q9GDKEAToD0W5xTbnlEwMlf3YIPQE", "148383",
-                "d6444e452d934938b2b71a0bfceca512",
+                "33591216d5184eb39bf8f564f223b9b9",
                 "https://authz.dinero.dk/dineroapi/oauth/token", "https://api.dinero.dk/v1");
         
         //Page<Contact> contacts = client.getContactResource().findAll(new PageRequest(0, 2));
@@ -28,6 +28,7 @@ public class Test {
         Product product = new Product();
         product.setName("Vinduespolering");
         product.setProductNumber("TEST_CODE");
+        product.setAccountNumber(1000);
         //product.setSalesTaxRulesetId(org.getDefaultSalesTaxRulesetId());
         product = client.getProductResource().save(product);
         

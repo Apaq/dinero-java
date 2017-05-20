@@ -6,8 +6,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class ResourceNotFoundException extends DineroException {
     
     @JsonCreator
-    public ResourceNotFoundException(@JsonProperty(value = "errorCode") String errorCode, @JsonProperty(value = "errorMessage") String errorMessage, @JsonProperty("helpUrl") String helpUrl, @JsonProperty("meta") ExceptionMeta meta) {
-        super(errorMessage, errorCode, meta);
+    public ResourceNotFoundException(@JsonProperty(value = "code") int code, @JsonProperty(value = "message") String message) {
+        super(message, code);
     }
     
 }

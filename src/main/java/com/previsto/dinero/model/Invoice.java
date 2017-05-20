@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Invoice implements Entity {
+public class Invoice extends ArchivableEntity implements Entity {
 
     private LocalDate paymentDate;
     private PaymentStatus paymentStatus = PaymentStatus.Draft;
@@ -22,9 +22,6 @@ public class Invoice implements Entity {
     private String contactId;
     @JsonProperty("Guid")
     private String id;
-    private Instant createdAt;
-    private Instant updatedAt;
-    private Instant deletedAt;
     private int number;
     private String contactName;
     private boolean showLinesInclVat;
@@ -33,14 +30,14 @@ public class Invoice implements Entity {
     private double totalInclVat;
     private double totalNonVatableAmount;
     private double totalVat;
-    private List<InvoiceTotalLine> totalLines;
+    private List<InvoiceTotalLine> totalLines = new ArrayList<>();
     private String currency;
     private String language;
     private String externalReference;
     private String description;
     private String comment;
     private LocalDate date;
-    private List<InvoiceProductLine> productLines;
+    private List<InvoiceProductLine> productLines = new ArrayList<>();
     private String address;
 
     @Override
@@ -104,30 +101,6 @@ public class Invoice implements Entity {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public Instant getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Instant createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Instant getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Instant updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public Instant getDeletedAt() {
-        return deletedAt;
-    }
-
-    public void setDeletedAt(Instant deletedAt) {
-        this.deletedAt = deletedAt;
     }
 
     public int getNumber() {

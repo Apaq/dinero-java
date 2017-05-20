@@ -1,23 +1,31 @@
 package com.previsto.dinero.exception;
 
+import java.util.List;
+import java.util.Map;
+
 public abstract class DineroException extends RuntimeException {
 
-    private String errorCode;
-    private ExceptionMeta meta;
-    
-    public DineroException(String message, String errorCode, ExceptionMeta meta) {
+    private int code;
+    private List<LanguageSpecificMessage> languageSpecificMessages;
+
+    public DineroException(String message, int code,
+                           List<LanguageSpecificMessage> languageSpecificMessages) {
         super(message, null);
-        this.errorCode = errorCode;
-        this.meta = meta;
+        this.code = code;
+        this.languageSpecificMessages = languageSpecificMessages;
     }
 
-    public DineroException(String message, String errorCode, Throwable e) {
+    public DineroException(String message, int code, Throwable e) {
         super(message, e);
-        this.errorCode = errorCode;
+        this.code = code;
     }
 
     public DineroException(String message) {
         super(message, null);
+    }
+    public DineroException(String message, int code) {
+        super(message, null);
+        this.code = code;
     }
 
     public DineroException(String message, Throwable e) {
@@ -26,20 +34,19 @@ public abstract class DineroException extends RuntimeException {
 
     private static final long serialVersionUID = 1L;
 
-    public String getErrorCode() {
-        return errorCode;
+    public int getCode() {
+        return code;
     }
 
-    public void setErrorCode(String errorCode) {
-        this.errorCode = errorCode;
+    public void setCode(int code) {
+        this.code = code;
     }
 
-    public ExceptionMeta getMeta() {
-        return meta;
+    public List<LanguageSpecificMessage> getLanguageSpecificMessages() {
+        return languageSpecificMessages;
     }
 
-    public void setMeta(ExceptionMeta meta) {
-        this.meta = meta;
+    public void setLanguageSpecificMessages(List<LanguageSpecificMessage> languageSpecificMessages) {
+        this.languageSpecificMessages = languageSpecificMessages;
     }
-
 }

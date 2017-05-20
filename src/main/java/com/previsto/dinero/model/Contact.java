@@ -6,7 +6,7 @@ import org.springframework.data.domain.Persistable;
 
 import java.time.Instant;
 
-public class Contact implements Entity {
+public class Contact extends ArchivableEntity {
 
     @JsonProperty("ContactGuid")
     private String id;
@@ -16,7 +16,7 @@ public class Contact implements Entity {
     @JsonProperty("IsPerson")
     private boolean isPerson;
     private String externalReference;
-    private String countryKey;
+    private String countryKey = "DK";
     private String street;
     private String zipCode;
     private String city;
@@ -24,9 +24,6 @@ public class Contact implements Entity {
     private String vatNumber;
     private PaymentConditionType paymentConditionType;
     private int paymentConditionNumberOfDays;
-    private Instant createdAt;
-    private Instant updatedAt;
-    private Instant deletedAt;
     private boolean isDebitor;
     private boolean isCreditor;
     private String webpage;
@@ -149,30 +146,6 @@ public class Contact implements Entity {
 
     public void setPaymentConditionNumberOfDays(int paymentConditionNumberOfDays) {
         this.paymentConditionNumberOfDays = paymentConditionNumberOfDays;
-    }
-
-    public Instant getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Instant createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Instant getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Instant updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public Instant getDeletedAt() {
-        return deletedAt;
-    }
-
-    public void setDeletedAt(Instant deletedAt) {
-        this.deletedAt = deletedAt;
     }
 
     public boolean isDebitor() {

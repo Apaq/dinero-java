@@ -8,11 +8,8 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Product implements Entity {
+public class Product extends ArchivableEntity {
 
-    private Instant createdAt;
-    private Instant updatedAt;
-    private Instant deletedAt;
     @JsonProperty("ProductGuid")
     private String id;
     private double baseAmountValueInclVat;
@@ -23,36 +20,12 @@ public class Product implements Entity {
     private double baseAmountValue;
     private double quantity;
     private int accountNumber;
-    private String unit;
+    private String unit = "parts";
 
     @Override
     @JsonIgnore
     public boolean isNew() {
         return id == null;
-    }
-
-    public Instant getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Instant createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Instant getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Instant updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public Instant getDeletedAt() {
-        return deletedAt;
-    }
-
-    public void setDeletedAt(Instant deletedAt) {
-        this.deletedAt = deletedAt;
     }
 
     @Override
