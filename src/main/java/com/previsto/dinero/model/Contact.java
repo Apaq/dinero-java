@@ -1,78 +1,51 @@
 package com.previsto.dinero.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.previsto.dinero.model.enums.ContactType;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.previsto.dinero.model.enums.AttachmentDeliveryMode;
-import com.previsto.dinero.model.enums.PaymentTermsMode;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.data.domain.Persistable;
 
-public class Contact extends ArchivableEntity {
+import java.time.Instant;
 
-    private ContactType type;
+public class Contact implements Entity {
+
+    @JsonProperty("ContactGuid")
+    private String id;
     private String name;
-    private String countryId;
-    private String street;
-    private String cityId;
-    private String cityText;
-    private String stateText;
-    private String zipcodeId;
-    private String zipcodeText;
-    private String contactNo;
+    private String email;
     private String phone;
-    private String fax;
-    private String currencyId;
-    private String registrationNo;
-    private String localeId;
-    private String ean;
-    private LocalDateTime createdTime;
-    
-    @JsonProperty("isCustomer")
-    private boolean customer;
-    @JsonProperty("isSupplier")
-    private boolean supplier;
+    @JsonProperty("IsPerson")
+    private boolean isPerson;
+    private String externalReference;
+    private String countryKey;
+    private String street;
+    private String zipCode;
+    private String city;
+    private String attPerson;
+    private String vatNumber;
+    private PaymentConditionType paymentConditionType;
+    private int paymentConditionNumberOfDays;
+    private Instant createdAt;
+    private Instant updatedAt;
+    private Instant deletedAt;
+    private boolean isDebitor;
+    private boolean isCreditor;
+    private String webpage;
+    private String eanNumber;
 
-    private PaymentTermsMode paymentTermsMode;
-    private Integer paymentTermsDays;
-
-    private String accessCode;
-    private AttachmentDeliveryMode emailAttachmentDeliveryMode;
-    
-    private List<ContactPerson> contactPersons = new ArrayList<>();
-    
-    public Contact() {
-    }
-
-    
-    public Contact(ContactType type, String name, String countryId) {
-        this.type = type;
-        this.name = name;
-        this.countryId = countryId;
-    }
-
+    @Override
     @JsonIgnore
-    public LocalDateTime getCreatedTime() {
-        return createdTime;
+    public boolean isNew() {
+        return id == null;
     }
 
-    @JsonProperty
-    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
-    public void setCreatedTime(LocalDateTime createdTime) {
-        this.createdTime = createdTime;
+    @Override
+    public String getId() {
+        return id;
     }
 
-    public ContactType getType() {
-        return type;
+    public void setId(String id) {
+        this.id = id;
     }
-
-    public void setType(ContactType type) {
-        this.type = type;
-    }
-
-   
 
     public String getName() {
         return name;
@@ -82,68 +55,12 @@ public class Contact extends ArchivableEntity {
         this.name = name;
     }
 
-    public String getCountryId() {
-        return countryId;
+    public String getEmail() {
+        return email;
     }
 
-    public void setCountryId(String countryId) {
-        this.countryId = countryId;
-    }
-
-    public String getCityId() {
-        return cityId;
-    }
-
-    public void setCityId(String cityId) {
-        this.cityId = cityId;
-    }
-
-    public String getZipcodeId() {
-        return zipcodeId;
-    }
-
-    public void setZipcodeId(String zipcodeId) {
-        this.zipcodeId = zipcodeId;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public String getCityText() {
-        return cityText;
-    }
-
-    public void setCityText(String cityText) {
-        this.cityText = cityText;
-    }
-
-    public String getStateText() {
-        return stateText;
-    }
-
-    public void setStateText(String stateText) {
-        this.stateText = stateText;
-    }
-
-    public String getZipcodeText() {
-        return zipcodeText;
-    }
-
-    public void setZipcodeText(String zipcodeText) {
-        this.zipcodeText = zipcodeText;
-    }
-
-    public String getContactNo() {
-        return contactNo;
-    }
-
-    public void setContactNo(String contactNo) {
-        this.contactNo = contactNo;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPhone() {
@@ -154,100 +71,139 @@ public class Contact extends ArchivableEntity {
         this.phone = phone;
     }
 
-    public String getFax() {
-        return fax;
+    public boolean isPerson() {
+        return isPerson;
     }
 
-    public void setFax(String fax) {
-        this.fax = fax;
+    public void setPerson(boolean person) {
+        isPerson = person;
     }
 
-    public String getCurrencyId() {
-        return currencyId;
+    public String getExternalReference() {
+        return externalReference;
     }
 
-    public void setCurrencyId(String currency) {
-        this.currencyId = currency;
+    public void setExternalReference(String externalReference) {
+        this.externalReference = externalReference;
     }
 
-    public String getRegistrationNo() {
-        return registrationNo;
+    public String getCountryKey() {
+        return countryKey;
     }
 
-    public void setRegistrationNo(String registrationNo) {
-        this.registrationNo = registrationNo;
+    public void setCountryKey(String countryKey) {
+        this.countryKey = countryKey;
     }
 
-    public String getLocaleId() {
-        return localeId;
+    public String getStreet() {
+        return street;
     }
 
-    public void setLocaleId(String localeId) {
-        this.localeId = localeId;
+    public void setStreet(String street) {
+        this.street = street;
     }
 
-    public String getEan() {
-        return ean;
+    public String getZipCode() {
+        return zipCode;
     }
 
-    public void setEan(String ean) {
-        this.ean = ean;
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
     }
 
-    public boolean isCustomer() {
-        return customer;
+    public String getCity() {
+        return city;
     }
 
-    public void setCustomer(boolean customer) {
-        this.customer = customer;
+    public void setCity(String city) {
+        this.city = city;
     }
 
-    public boolean isSupplier() {
-        return supplier;
+    public String getAttPerson() {
+        return attPerson;
     }
 
-    public void setSupplier(boolean supplier) {
-        this.supplier = supplier;
+    public void setAttPerson(String attPerson) {
+        this.attPerson = attPerson;
     }
 
-    public PaymentTermsMode getPaymentTermsMode() {
-        return paymentTermsMode;
+    public String getVatNumber() {
+        return vatNumber;
     }
 
-    public void setPaymentTermsMode(PaymentTermsMode paymentTermsMode) {
-        this.paymentTermsMode = paymentTermsMode;
+    public void setVatNumber(String vatNumber) {
+        this.vatNumber = vatNumber;
     }
 
-    public Integer getPaymentTermsDays() {
-        return paymentTermsDays;
+    public PaymentConditionType getPaymentConditionType() {
+        return paymentConditionType;
     }
 
-    public void setPaymentTermsDays(Integer paymentTermsDays) {
-        this.paymentTermsDays = paymentTermsDays;
+    public void setPaymentConditionType(PaymentConditionType paymentConditionType) {
+        this.paymentConditionType = paymentConditionType;
     }
 
-    public String getAccessCode() {
-        return accessCode;
+    public int getPaymentConditionNumberOfDays() {
+        return paymentConditionNumberOfDays;
     }
 
-    public void setAccessCode(String accessCode) {
-        this.accessCode = accessCode;
+    public void setPaymentConditionNumberOfDays(int paymentConditionNumberOfDays) {
+        this.paymentConditionNumberOfDays = paymentConditionNumberOfDays;
     }
 
-    public AttachmentDeliveryMode getEmailAttachmentDeliveryMode() {
-        return emailAttachmentDeliveryMode;
+    public Instant getCreatedAt() {
+        return createdAt;
     }
 
-    public void setEmailAttachmentDeliveryMode(AttachmentDeliveryMode emailAttachmentDeliveryMode) {
-        this.emailAttachmentDeliveryMode = emailAttachmentDeliveryMode;
+    public void setCreatedAt(Instant createdAt) {
+        this.createdAt = createdAt;
     }
 
-    public List<ContactPerson> getContactPersons() {
-        return contactPersons;
+    public Instant getUpdatedAt() {
+        return updatedAt;
     }
 
-    public void setContactPersons(List<ContactPerson> contactPersons) {
-        this.contactPersons = contactPersons;
+    public void setUpdatedAt(Instant updatedAt) {
+        this.updatedAt = updatedAt;
     }
-    
+
+    public Instant getDeletedAt() {
+        return deletedAt;
+    }
+
+    public void setDeletedAt(Instant deletedAt) {
+        this.deletedAt = deletedAt;
+    }
+
+    public boolean isDebitor() {
+        return isDebitor;
+    }
+
+    public void setDebitor(boolean debitor) {
+        isDebitor = debitor;
+    }
+
+    public boolean isCreditor() {
+        return isCreditor;
+    }
+
+    public void setCreditor(boolean creditor) {
+        isCreditor = creditor;
+    }
+
+    public String getWebpage() {
+        return webpage;
+    }
+
+    public void setWebpage(String webpage) {
+        this.webpage = webpage;
+    }
+
+    public String getEanNumber() {
+        return eanNumber;
+    }
+
+    public void setEanNumber(String eanNumber) {
+        this.eanNumber = eanNumber;
+    }
 }

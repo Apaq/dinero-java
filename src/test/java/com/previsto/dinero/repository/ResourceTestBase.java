@@ -1,11 +1,15 @@
 package com.previsto.dinero.repository;
 
 import com.previsto.dinero.ErrorHandler;
-import com.previsto.dinero.model.Entity;
+
 import java.util.List;
+
+import com.previsto.dinero.model.Entity;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
+
+import org.springframework.data.domain.Persistable;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

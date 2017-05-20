@@ -51,14 +51,12 @@ public class ContactResourceTest extends ResourceTestBase<Contact> {
     @Override
     protected void doCheckEntity(Contact entity) {
         if ("EkoYx6TBSPC7rixfDCaM1Q".equals(entity.getId())) {
-            assertEquals(false, entity.isArchived());
-            assertEquals(LocalDateTime.parse("2016-12-23T08:06:07"), entity.getCreatedTime());
+            assertEquals(LocalDateTime.parse("2016-12-23T08:06:07"), entity.getCreatedAt());
             return;
         }
 
         if ("DDAc0RmLQyelyZrv55JJKg".equals(entity.getId())) {
-            assertEquals(false, entity.isArchived());
-            assertEquals(LocalDateTime.parse("2016-12-23T08:06:40"), entity.getCreatedTime());
+            assertEquals(LocalDateTime.parse("2016-12-23T08:06:40"), entity.getCreatedAt());
             return;
         }
 

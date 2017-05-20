@@ -45,7 +45,7 @@ public class ProductResourceTest extends ResourceTestBase<Product> {
     @Override
     protected void doCheckEntity(Product entity) {
         if ("ksSgZEGPQmGohQ9eWxVOoQ".equals(entity.getId())) {
-            assertEquals("WC_PREVISTO", entity.getProductNo());
+            assertEquals("WC_PREVISTO", entity.getProductNumber());
             return;
         }
 

@@ -2,68 +2,52 @@ package com.previsto.dinero;
 
 import com.previsto.dinero.model.Contact;
 import com.previsto.dinero.model.Invoice;
-import com.previsto.dinero.model.InvoiceLine;
-import com.previsto.dinero.model.Organization;
+import com.previsto.dinero.model.InvoiceProductLine;
 import com.previsto.dinero.model.Product;
-import com.previsto.dinero.model.enums.ContactType;
 
 public class Test {
 
     public static void main(String[] args) {
         
-        DineroClient client = new DineroClient("66d361eea7c89d4f9c4d56ef66b7e9bce20784e7", "https://api.billysbilling.com/v2");
-        
-        Organization org = client.getOrganizationResource().getCurrent();
+        DineroClient client = new DineroClient("Previsto",
+                "ZfnZyhqoc3B7q9GDKEAToD0W5xTbnlEwMlf3YIPQE", "148383",
+                "d6444e452d934938b2b71a0bfceca512",
+                "https://authz.dinero.dk/dineroapi/oauth/token", "https://api.dinero.dk/v1");
         
         //Page<Contact> contacts = client.getContactResource().findAll(new PageRequest(0, 2));
-        Contact contact = new Contact(ContactType.Company, "Apaq", "DK");
-        contact.setSupplier(true);
+        Contact contact = new Contact();
+        contact.setCreditor(true);
+        contact.setName("Apaq");
+        contact.setStreet("Fyensgade 16, 1. th.");
+        contact.setZipCode("9000");
+        contact.setCity("Aalborg");
         contact = client.getContactResource().save(contact);
         
         System.out.println(contact);
         
         Product product = new Product();
         product.setName("Vinduespolering");
-        product.setProductNo("TEST_CODE");
-        product.setAccountId(org.getDefaultSalesAccountId());
+        product.setProductNumber("TEST_CODE");
         //product.setSalesTaxRulesetId(org.getDefaultSalesTaxRulesetId());
         product = client.getProductResource().save(product);
         
         Invoice invoice = new Invoice();
         invoice.setContactId(contact.getId());
-        invoice.setCurrencyId("DKK");
-        InvoiceLine line = new InvoiceLine();
-        line.setUnitPrice(200);
+        invoice.setCurrency("DKK");
+        InvoiceProductLine line = new InvoiceProductLine();
+        line.setBaseAmountValue(200);
         line.setDescription("Test");
         //line.setDiscountValue(0);
         //line.setDiscountMode(DiscountMode.PercentageDiscount);
         line.setProductId(product.getId());
-        invoice.getLines().add(line);
-        invoice = client.getInvoiceResource().save(invoice);
+        invoice.getProductLines().add(line);
         invoice = client.getInvoiceResource().save(invoice);
         System.out.println(invoice);
         
         //client.getInvoiceResource().approve(invoice.getId());
         
-        Invoice invoice2 = new Invoice();
-        invoice2.setContactId(contact.getId());
-        invoice2.setCurrencyId("DKK");
-        line = new InvoiceLine();
-        line.setUnitPrice(200);
-        line.setDescription("Test");
-        //line.setDiscountValue(0);
-        //line.setDiscountMode(DiscountMode.PercentageDiscount);
-        line.setProductId(product.getId());
-        invoice2.getLines().add(line);
-        invoice2 = client.getInvoiceResource().save(invoice2);
-        invoice2 = client.getInvoiceResource().save(invoice2);
-        System.out.println(invoice);
-        
-        //client.getInvoiceResource().approve(invoice2.getId());
-        
-        
+
         client.getInvoiceResource().delete(invoice);
-        client.getInvoiceResource().delete(invoice2);
         client.getContactResource().delete(contact);
         client.getProductResource().delete(product);
         

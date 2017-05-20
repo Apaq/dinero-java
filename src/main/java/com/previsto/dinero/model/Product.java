@@ -1,17 +1,101 @@
 package com.previsto.dinero.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.data.domain.Persistable;
+
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Product extends ArchivableEntity {
+public class Product implements Entity {
+
+    private Instant createdAt;
+    private Instant updatedAt;
+    private Instant deletedAt;
+    @JsonProperty("ProductGuid")
+    private String id;
+    private double baseAmountValueInclVat;
+    private double totalAmount;
+    private double totalAmountInclVat;
+    private String productNumber;
     private String name;
-    private String description;
-    private String accountId;
-    private String productNo;
-    private String suppliersProductNo;
-    private String salesTaxRulesetId;
-    private List<ProductPrice> prices = new ArrayList<>();
-    
+    private double baseAmountValue;
+    private double quantity;
+    private int accountNumber;
+    private String unit;
+
+    @Override
+    @JsonIgnore
+    public boolean isNew() {
+        return id == null;
+    }
+
+    public Instant getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Instant createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Instant getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Instant updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public Instant getDeletedAt() {
+        return deletedAt;
+    }
+
+    public void setDeletedAt(Instant deletedAt) {
+        this.deletedAt = deletedAt;
+    }
+
+    @Override
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public double getBaseAmountValueInclVat() {
+        return baseAmountValueInclVat;
+    }
+
+    public void setBaseAmountValueInclVat(double baseAmountValueInclVat) {
+        this.baseAmountValueInclVat = baseAmountValueInclVat;
+    }
+
+    public double getTotalAmount() {
+        return totalAmount;
+    }
+
+    public void setTotalAmount(double totalAmount) {
+        this.totalAmount = totalAmount;
+    }
+
+    public double getTotalAmountInclVat() {
+        return totalAmountInclVat;
+    }
+
+    public void setTotalAmountInclVat(double totalAmountInclVat) {
+        this.totalAmountInclVat = totalAmountInclVat;
+    }
+
+    public String getProductNumber() {
+        return productNumber;
+    }
+
+    public void setProductNumber(String productNumber) {
+        this.productNumber = productNumber;
+    }
+
     public String getName() {
         return name;
     }
@@ -20,52 +104,35 @@ public class Product extends ArchivableEntity {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public double getBaseAmountValue() {
+        return baseAmountValue;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setBaseAmountValue(double baseAmountValue) {
+        this.baseAmountValue = baseAmountValue;
     }
 
-    public String getAccountId() {
-        return accountId;
+    public double getQuantity() {
+        return quantity;
     }
 
-    public void setAccountId(String accountId) {
-        this.accountId = accountId;
+    public void setQuantity(double quantity) {
+        this.quantity = quantity;
     }
 
-    public String getSalesTaxRulesetId() {
-        return salesTaxRulesetId;
+    public int getAccountNumber() {
+        return accountNumber;
     }
 
-    public void setSalesTaxRulesetId(String salesTaxRulesetId) {
-        this.salesTaxRulesetId = salesTaxRulesetId;
+    public void setAccountNumber(int accountNumber) {
+        this.accountNumber = accountNumber;
     }
 
-    public String getProductNo() {
-        return productNo;
+    public String getUnit() {
+        return unit;
     }
 
-    public void setProductNo(String productNo) {
-        this.productNo = productNo;
+    public void setUnit(String unit) {
+        this.unit = unit;
     }
-
-    public String getSuppliersProductNo() {
-        return suppliersProductNo;
-    }
-
-    public void setSuppliersProductNo(String suppliersProductNo) {
-        this.suppliersProductNo = suppliersProductNo;
-    }
-
-    public List<ProductPrice> getPrices() {
-        return prices;
-    }
-
-    public void setPrices(List<ProductPrice> prices) {
-        this.prices = prices;
-    }
-    
 }

@@ -7,10 +7,17 @@ import org.springframework.util.Assert;
 @ConfigurationProperties("dinero")
 public class DineroProperties {
 
+    private String clientId;
+    private String clientSecret;
+
+    private String organizationId;
+
     /**
      * The API key for dinero.
      */
     private String apiKey;
+
+    private String authUrl;
 
     /**
      * The API url for dinero.
@@ -41,5 +48,35 @@ public class DineroProperties {
     }
 
 
+    public String getClientId() {
+        return clientId;
+    }
 
+    public void setClientId(String clientId) {
+        this.clientId = clientId;
+    }
+
+    public String getClientSecret() {
+        return clientSecret;
+    }
+
+    public void setClientSecret(String clientSecret) {
+        this.clientSecret = clientSecret;
+    }
+
+    public String getOrganizationId() {
+        return organizationId;
+    }
+
+    public void setOrganizationId(String organizationId) {
+        this.organizationId = organizationId;
+    }
+
+    public String getAuthUrl() {
+        return authUrl;
+    }
+
+    public void setAuthUrl(String authUrl) {
+        this.authUrl = authUrl;
+    }
 }

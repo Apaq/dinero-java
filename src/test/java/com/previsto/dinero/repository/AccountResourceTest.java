@@ -45,7 +45,7 @@ public class AccountResourceTest extends ResourceTestBase<Account> {
     @Override
     protected void doCheckEntity(Account entity) {
         if ("LpR6sv4MREW1aMlJHtASOg".equals(entity.getId())) {
-            assertEquals(7210, entity.getAccountNo());
+            assertEquals(7210, entity.getAccountNumber());
             return;
         }
 

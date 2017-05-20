@@ -26,9 +26,9 @@ public class DineroClientAutoConfiguration {
     private DineroClientFactory clientFactory;
     
     @Bean
-    public DineroClient billyClient() {
+    public DineroClient dineroClient() {
         String displayKey = properties.getApiKey() != null ? "Not NULL" : "NULL";
         LOG.info("Initializing DineroClient. [apiKey={}]", displayKey);
-        return clientFactory.create(properties.getApiKey());
+        return clientFactory.create(properties.getOrganizationId(), properties.getApiKey());
     }
 }

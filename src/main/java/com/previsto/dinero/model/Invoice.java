@@ -3,99 +3,90 @@ package com.previsto.dinero.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.previsto.dinero.model.enums.InvoiceSentState;
-import com.previsto.dinero.model.enums.InvoiceState;
-import com.previsto.dinero.model.enums.InvoiceTaxMode;
-import com.previsto.dinero.model.enums.InvoiceType;
-import com.previsto.dinero.model.enums.PaymentTermsMode;
+import org.springframework.data.domain.Persistable;
+
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Invoice extends Entity {
-    protected LocalDateTime createdTime;
-    
-    private float amount;
-    protected LocalDateTime approvedTime; 
-    private String attContactPersonId;
-    private float balance;
+public class Invoice implements Entity {
+
+    private LocalDate paymentDate;
+    private PaymentStatus paymentStatus = PaymentStatus.Draft;
+    private int paymentConditionNumberOfDays;
+    private PaymentConditionType paymentConditionType = PaymentConditionType.Netto;
+    private InvoiceStatus invoiceStatus = InvoiceStatus.Draft;
+    @JsonProperty("ContactGuid")
     private String contactId;
-    private String contactMessage;
-    private String creditedInvoiceId;
-    private String currencyId;
-    private String downloadUrl;
-    private LocalDate dueDate;
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    private LocalDate entryDate = LocalDate.now();
-    private float exchangeRate = 1f;
-    private String invoiceNo;
-    private boolean paid;
-    private String lineDescription;
-    private String orderNo;
-    private Integer paymentTermsDays;
-    private PaymentTermsMode paymentTermsMode;
-    private String recurringInvoiceId;
-    private InvoiceSentState sentState = InvoiceSentState.Unsent;
-    private InvoiceState state = InvoiceState.Draft;
-    private float tax;
-    private InvoiceTaxMode taxMode = InvoiceTaxMode.Excluding;
-    
-    private List<InvoiceLine> lines = new ArrayList<>();
-    private List<InvoiceAttachment> attachments = new ArrayList<>();
-    private List<InvoiceLateFee> lateFees = new ArrayList<>();
-    private List<BalanceModifier> balanceModifiers = new ArrayList<>();
-    private InvoiceType type = InvoiceType.Invoice;
+    @JsonProperty("Guid")
+    private String id;
+    private Instant createdAt;
+    private Instant updatedAt;
+    private Instant deletedAt;
+    private int number;
+    private String contactName;
+    private boolean showLinesInclVat;
+    private double totalExclVat;
+    private double totalVatableAmount;
+    private double totalInclVat;
+    private double totalNonVatableAmount;
+    private double totalVat;
+    private List<InvoiceTotalLine> totalLines;
+    private String currency;
+    private String language;
+    private String externalReference;
+    private String description;
+    private String comment;
+    private LocalDate date;
+    private List<InvoiceProductLine> productLines;
+    private String address;
 
-    
+    @Override
     @JsonIgnore
-    public LocalDateTime getCreatedTime() {
-        return createdTime;
+    public boolean isNew() {
+        return id == null;
     }
 
-    @JsonProperty
-    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
-    public void setCreatedTime(LocalDateTime createdTime) {
-        this.createdTime = createdTime;
-    }
-    
-    @JsonIgnore
-    public float getAmount() {
-        return amount;
+    public LocalDate getPaymentDate() {
+        return paymentDate;
     }
 
-    @JsonProperty
-    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
-    public void setAmount(float amount) {
-        this.amount = amount;
+    public void setPaymentDate(LocalDate paymentDate) {
+        this.paymentDate = paymentDate;
     }
 
-    @JsonIgnore
-    public LocalDateTime getApprovedTime() {
-        return approvedTime;
+    public PaymentStatus getPaymentStatus() {
+        return paymentStatus;
     }
 
-    @JsonProperty
-    public void setApprovedTime(LocalDateTime approvedTime) {
-        this.approvedTime = approvedTime;
+    public void setPaymentStatus(PaymentStatus paymentStatus) {
+        this.paymentStatus = paymentStatus;
     }
 
-    public String getAttContactPersonId() {
-        return attContactPersonId;
+    public int getPaymentConditionNumberOfDays() {
+        return paymentConditionNumberOfDays;
     }
 
-    public void setAttContactPersonId(String attContactPersonId) {
-        this.attContactPersonId = attContactPersonId;
+    public void setPaymentConditionNumberOfDays(int paymentConditionNumberOfDays) {
+        this.paymentConditionNumberOfDays = paymentConditionNumberOfDays;
     }
 
-    @JsonIgnore
-    public float getBalance() {
-        return balance;
+    public PaymentConditionType getPaymentConditionType() {
+        return paymentConditionType;
     }
 
-    @JsonProperty
-    public void setBalance(float balance) {
-        this.balance = balance;
+    public void setPaymentConditionType(PaymentConditionType paymentConditionType) {
+        this.paymentConditionType = paymentConditionType;
+    }
+
+    public InvoiceStatus getInvoiceStatus() {
+        return invoiceStatus;
+    }
+
+    public void setInvoiceStatus(InvoiceStatus invoiceStatus) {
+        this.invoiceStatus = invoiceStatus;
     }
 
     public String getContactId() {
@@ -106,207 +97,172 @@ public class Invoice extends Entity {
         this.contactId = contactId;
     }
 
-    public String getContactMessage() {
-        return contactMessage;
+    @Override
+    public String getId() {
+        return id;
     }
 
-    public void setContactMessage(String contactMessage) {
-        this.contactMessage = contactMessage;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getCreditedInvoiceId() {
-        return creditedInvoiceId;
+    public Instant getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCreditedInvoiceId(String creditedInvoiceId) {
-        this.creditedInvoiceId = creditedInvoiceId;
+    public void setCreatedAt(Instant createdAt) {
+        this.createdAt = createdAt;
     }
 
-    public String getCurrencyId() {
-        return currencyId;
+    public Instant getUpdatedAt() {
+        return updatedAt;
     }
 
-    public void setCurrencyId(String currencyId) {
-        this.currencyId = currencyId;
+    public void setUpdatedAt(Instant updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
-    public String getDownloadUrl() {
-        return downloadUrl;
+    public Instant getDeletedAt() {
+        return deletedAt;
     }
 
-    public void setDownloadUrl(String downloadUrl) {
-        this.downloadUrl = downloadUrl;
+    public void setDeletedAt(Instant deletedAt) {
+        this.deletedAt = deletedAt;
     }
 
-    @JsonIgnore
-    public LocalDate getDueDate() {
-        return dueDate;
+    public int getNumber() {
+        return number;
     }
 
-    @JsonProperty
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    public void setDueDate(LocalDate dueDate) {
-        this.dueDate = dueDate;
+    public void setNumber(int number) {
+        this.number = number;
     }
 
-    public LocalDate getEntryDate() {
-        return entryDate;
+    public String getContactName() {
+        return contactName;
     }
 
-    public void setEntryDate(LocalDate entryDate) {
-        this.entryDate = entryDate;
+    public void setContactName(String contactName) {
+        this.contactName = contactName;
     }
 
-    public float getExchangeRate() {
-        return exchangeRate;
+    public boolean isShowLinesInclVat() {
+        return showLinesInclVat;
     }
 
-    public void setExchangeRate(float exchangeRate) {
-        this.exchangeRate = exchangeRate;
+    public void setShowLinesInclVat(boolean showLinesInclVat) {
+        this.showLinesInclVat = showLinesInclVat;
     }
 
-    @JsonIgnore
-    public String getInvoiceNo() {
-        return invoiceNo;
+    public double getTotalExclVat() {
+        return totalExclVat;
     }
 
-    @JsonProperty
-    public void setInvoiceNo(String invoiceNo) {
-        this.invoiceNo = invoiceNo;
+    public void setTotalExclVat(double totalExclVat) {
+        this.totalExclVat = totalExclVat;
     }
 
-    @JsonIgnore
-    public boolean isPaid() {
-        return paid;
+    public double getTotalVatableAmount() {
+        return totalVatableAmount;
     }
 
-    @JsonProperty("isPaid")
-    public void setPaid(boolean paid) {
-        this.paid = paid;
+    public void setTotalVatableAmount(double totalVatableAmount) {
+        this.totalVatableAmount = totalVatableAmount;
     }
 
-    public String getLineDescription() {
-        return lineDescription;
+    public double getTotalInclVat() {
+        return totalInclVat;
     }
 
-    public void setLineDescription(String lineDescription) {
-        this.lineDescription = lineDescription;
+    public void setTotalInclVat(double totalInclVat) {
+        this.totalInclVat = totalInclVat;
     }
 
-    public String getOrderNo() {
-        return orderNo;
+    public double getTotalNonVatableAmount() {
+        return totalNonVatableAmount;
     }
 
-    public void setOrderNo(String orderNo) {
-        this.orderNo = orderNo;
+    public void setTotalNonVatableAmount(double totalNonVatableAmount) {
+        this.totalNonVatableAmount = totalNonVatableAmount;
     }
 
-    public Integer getPaymentTermsDays() {
-        return paymentTermsDays;
+    public double getTotalVat() {
+        return totalVat;
     }
 
-    public void setPaymentTermsDays(Integer paymentTermsDays) {
-        this.paymentTermsDays = paymentTermsDays;
+    public void setTotalVat(double totalVat) {
+        this.totalVat = totalVat;
     }
 
-    public PaymentTermsMode getPaymentTermsMode() {
-        return paymentTermsMode;
+    public List<InvoiceTotalLine> getTotalLines() {
+        return totalLines;
     }
 
-    public void setPaymentTermsMode(PaymentTermsMode paymentTermsMode) {
-        this.paymentTermsMode = paymentTermsMode;
+    public void setTotalLines(List<InvoiceTotalLine> totalLines) {
+        this.totalLines = totalLines;
     }
 
-    @JsonIgnore
-    public String getRecurringInvoiceId() {
-        return recurringInvoiceId;
+    public String getCurrency() {
+        return currency;
     }
 
-    @JsonProperty
-    public void setRecurringInvoiceId(String recurringInvoiceId) {
-        this.recurringInvoiceId = recurringInvoiceId;
+    public void setCurrency(String currency) {
+        this.currency = currency;
     }
 
-    public InvoiceSentState getSentState() {
-        return sentState;
+    public String getLanguage() {
+        return language;
     }
 
-    public void setSentState(InvoiceSentState sentState) {
-        this.sentState = sentState;
+    public void setLanguage(String language) {
+        this.language = language;
     }
 
-    @JsonIgnore
-    public InvoiceState getState() {
-        return state;
+    public String getExternalReference() {
+        return externalReference;
     }
 
-    @JsonProperty
-    public void setState(InvoiceState state) {
-        this.state = state;
+    public void setExternalReference(String externalReference) {
+        this.externalReference = externalReference;
     }
 
-    @JsonIgnore
-    public float getTax() {
-        return tax;
+    public String getDescription() {
+        return description;
     }
 
-    @JsonProperty
-    public void setTax(float tax) {
-        this.tax = tax;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public InvoiceTaxMode getTaxMode() {
-        return taxMode;
+    public String getComment() {
+        return comment;
     }
 
-    public void setTaxMode(InvoiceTaxMode taxMode) {
-        this.taxMode = taxMode;
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
-    public List<InvoiceLine> getLines() {
-        return lines;
+    public LocalDate getDate() {
+        return date;
     }
 
-    public void setLines(List<InvoiceLine> lines) {
-        this.lines = lines;
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
-    
-    public List<InvoiceAttachment> getAttachments() {
-        return attachments;
+    public List<InvoiceProductLine> getProductLines() {
+        return productLines;
     }
 
-    public void setAttachments(List<InvoiceAttachment> attachments) {
-        this.attachments = attachments;
+    public void setProductLines(List<InvoiceProductLine> productLines) {
+        this.productLines = productLines;
     }
 
-    @JsonIgnore
-    public List<InvoiceLateFee> getLateFees() {
-        return lateFees;
+    public String getAddress() {
+        return address;
     }
 
-    public void setLateFees(List<InvoiceLateFee> lateFees) {
-        this.lateFees = lateFees;
+    public void setAddress(String address) {
+        this.address = address;
     }
-
-    @JsonIgnore
-    public List<BalanceModifier> getBalanceModifiers() {
-        return balanceModifiers;
-    }
-
-    @JsonProperty
-    public void setBalanceModifiers(List<BalanceModifier> balanceModifiers) {
-        this.balanceModifiers = balanceModifiers;
-    }
-
-    public InvoiceType getType() {
-        return type;
-    }
-
-    public void setType(InvoiceType type) {
-        this.type = type;
-    }
-    
-    
-    
 }
