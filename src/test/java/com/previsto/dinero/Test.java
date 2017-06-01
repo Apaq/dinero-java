@@ -1,9 +1,6 @@
 package com.previsto.dinero;
 
-import com.previsto.dinero.model.Contact;
-import com.previsto.dinero.model.Invoice;
-import com.previsto.dinero.model.InvoiceProductLine;
-import com.previsto.dinero.model.Product;
+import com.previsto.dinero.model.*;
 
 public class Test {
 
@@ -25,12 +22,12 @@ public class Test {
         
         System.out.println(contact);
         
-        Product product = new Product();
+        /*Product product = new Product();
         product.setName("Vinduespolering");
         product.setProductNumber("TEST_CODE");
         product.setAccountNumber(1000);
         //product.setSalesTaxRulesetId(org.getDefaultSalesTaxRulesetId());
-        product = client.getProductResource().save(product);
+        product = client.getProductResource().save(product);*/
         
         Invoice invoice = new Invoice();
         invoice.setContactId(contact.getId());
@@ -38,9 +35,12 @@ public class Test {
         InvoiceProductLine line = new InvoiceProductLine();
         line.setBaseAmountValue(200);
         line.setDescription("Test");
+        line.setAccountNumber(1000);
+        line.setUnit(UnitType.Session);
+        line.setQuantity(1);
         //line.setDiscountValue(0);
         //line.setDiscountMode(DiscountMode.PercentageDiscount);
-        line.setProductId(product.getId());
+        //line.setProductId(product.getId());
         invoice.getProductLines().add(line);
         invoice = client.getInvoiceResource().save(invoice);
         System.out.println(invoice);
@@ -50,7 +50,7 @@ public class Test {
 
         client.getInvoiceResource().delete(invoice);
         client.getContactResource().delete(contact);
-        client.getProductResource().delete(product);
+        //client.getProductResource().delete(product);
         
     }
 }

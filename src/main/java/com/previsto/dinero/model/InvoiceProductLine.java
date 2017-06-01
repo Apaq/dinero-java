@@ -15,7 +15,7 @@ public class InvoiceProductLine {
     private String comments;
     private double quantity;
     private int accountNumber;
-    private String unit;
+    private UnitType unit;
     private double discount;
     private String lineType;
 
@@ -99,11 +99,11 @@ public class InvoiceProductLine {
         this.accountNumber = accountNumber;
     }
 
-    public String getUnit() {
+    public UnitType getUnit() {
         return unit;
     }
 
-    public void setUnit(String unit) {
+    public void setUnit(UnitType unit) {
         this.unit = unit;
     }
 
