@@ -34,7 +34,7 @@ public class AccountResourceTest extends ResourceTestBase<Account> {
 
     @Override
     protected String generateSingularId() {
-        return "LpR6sv4MREW1aMlJHtASOg";
+        return "1000";
     }
     
     @Override

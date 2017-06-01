@@ -1,30 +1,41 @@
 {
-  "meta": {
-    "statusCode": 200,
-    "success": true,
-    "paging": {
-      "page": 1,
-      "pageSize": 1000,
-      "pageCount": 1,
-      "total": 1
-    },
-    "time": 0.031423807144165
-  },
-  "products": [
+  "Collection": [
     {
-      "id": "ksSgZEGPQmGohQ9eWxVOoQ",
-      "organizationId": "07WgjDjARrWDUR0FAqEVEg",
-      "name": "Vinduespolering",
-      "description": "",
-      "accountId": "jIq5LqhoQm6fPS6xJx1Ctg",
-      "inventoryAccountId": null,
-      "productNo": "WC_PREVISTO",
-      "suppliersProductNo": "",
-      "salesTaxRulesetId": null,
-      "isArchived": false,
-      "isInInventory": false,
-      "imageId": null,
-      "imageUrl": null
+      "Name": "Vinduespudsning",
+      "Quantity": 1,
+      "Unit": "parts",
+      "AccountNumber": 1000,
+      "BaseAmountValue": 0,
+      "BaseAmountValueInclVat": 0,
+      "TotalAmount": 0,
+      "TotalAmountInclVat": 0,
+      "CreatedAt": "2017-05-19T14:15:01.61",
+      "UpdatedAt": "2017-05-19T14:15:01.61",
+      "DeletedAt": null,
+      "ProductNumber": null,
+      "ProductGuid": "eb4b43d4-1996-475f-8b9f-782be605227c"
+    },
+    {
+      "Name": "Vinduespolering",
+      "Quantity": 0,
+      "Unit": "parts",
+      "AccountNumber": 1000,
+      "BaseAmountValue": 0,
+      "BaseAmountValueInclVat": 0,
+      "TotalAmount": 0,
+      "TotalAmountInclVat": 0,
+      "CreatedAt": "2017-05-21T11:48:59.827",
+      "UpdatedAt": "2017-05-21T11:48:59.827",
+      "DeletedAt": null,
+      "ProductNumber": "TEST_CODE",
+      "ProductGuid": "bea45ed0-df16-4fd3-84de-8249c4ab23cf"
     }
-  ]
+  ],
+  "Pagination": {
+    "MaxPageSizeAllowed": 1000,
+    "PageSize": 100,
+    "Result": 2,
+    "ResultWithoutFilter": 2,
+    "Page": 0
+  }
 }

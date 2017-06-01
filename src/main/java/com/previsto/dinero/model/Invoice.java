@@ -1,13 +1,9 @@
 package com.previsto.dinero.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.springframework.data.domain.Persistable;
 
-import java.time.Instant;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,12 +13,12 @@ public class Invoice extends ArchivableEntity implements Entity {
     private PaymentStatus paymentStatus = PaymentStatus.Draft;
     private int paymentConditionNumberOfDays;
     private PaymentConditionType paymentConditionType = PaymentConditionType.Netto;
-    private InvoiceStatus invoiceStatus = InvoiceStatus.Draft;
+    private InvoiceStatus status = InvoiceStatus.Draft;
     @JsonProperty("ContactGuid")
     private String contactId;
     @JsonProperty("Guid")
     private String id;
-    private int number;
+    private long number;
     private String contactName;
     private boolean showLinesInclVat;
     private double totalExclVat;
@@ -78,12 +74,12 @@ public class Invoice extends ArchivableEntity implements Entity {
         this.paymentConditionType = paymentConditionType;
     }
 
-    public InvoiceStatus getInvoiceStatus() {
-        return invoiceStatus;
+    public InvoiceStatus getStatus() {
+        return status;
     }
 
-    public void setInvoiceStatus(InvoiceStatus invoiceStatus) {
-        this.invoiceStatus = invoiceStatus;
+    public void setStatus(InvoiceStatus status) {
+        this.status = status;
     }
 
     public String getContactId() {
@@ -103,11 +99,11 @@ public class Invoice extends ArchivableEntity implements Entity {
         this.id = id;
     }
 
-    public int getNumber() {
+    public long getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(long number) {
         this.number = number;
     }
 

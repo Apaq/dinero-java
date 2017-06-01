@@ -8,9 +8,11 @@ import java.util.Map;
 import org.springframework.web.client.RestTemplate;
 
 public class InvoiceResource extends Resource<Invoice>{
-    
+
+    private static final String FIELDS = "Number,Guid,ContactName,Date,PaymentDate,Description,Currency,Status,MailOutStatus,TotalExclVatInDkk,TotalInclVatInDkk,TotalExclVat,TotalInclVat,CreatedAt,UpdatedAt,DeletedAt";
+
     public InvoiceResource(RestTemplate restTemplate, String serviceUrl) {
-        super(Invoice.class, "invoices", restTemplate, serviceUrl);
+        super(Invoice.class, "invoices", restTemplate, serviceUrl, FIELDS);
     }
     
     public void book(String id) {

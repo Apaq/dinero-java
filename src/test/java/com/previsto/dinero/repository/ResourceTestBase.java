@@ -5,6 +5,7 @@ import com.previsto.dinero.ErrorHandler;
 import java.util.List;
 
 import com.previsto.dinero.model.Entity;
+import com.previsto.dinero.net.RestTemplateHelper;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -21,6 +22,7 @@ import static org.springframework.test.web.client.match.MockRestRequestMatchers.
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
 import org.springframework.test.web.client.response.DefaultResponseCreator;
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withStatus;
+import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;
 
 public abstract class ResourceTestBase<T extends Entity> {
 
@@ -33,6 +35,7 @@ public abstract class ResourceTestBase<T extends Entity> {
     public ResourceTestBase(Resource<T> resource, Class type) {
         this.resource = resource;
         this.resource.restTemplate.setErrorHandler(new ErrorHandler());
+        RestTemplateHelper.configureForDineroJargon(this.resource.restTemplate);
         this.restTemplate = resource.restTemplate;
         this.resourceName = resource.resourceName;
         this.type = type;
@@ -71,8 +74,7 @@ public abstract class ResourceTestBase<T extends Entity> {
         System.out.println("get");
         String id = generateSingularId();
         
-        String queryParams = generateExpectedGetQueryParams();
-        mockServer.expect(requestTo(resource.serviceUrl + "/" + resourceName + "/" + id + queryParams)).andExpect(method(HttpMethod.GET))
+        mockServer.expect(requestTo(resource.serviceUrl + "/" + resourceName + "/" + id)).andExpect(method(HttpMethod.GET))
                 .andRespond(generateExpectedGetResponse());
         T entity = resource.get(id);
         doCheckEntity(entity);
@@ -85,8 +87,7 @@ public abstract class ResourceTestBase<T extends Entity> {
         System.out.println("get");
         String id = "NONE";
         
-        String queryParams = generateExpectedGetQueryParams();
-        mockServer.expect(requestTo(resource.serviceUrl + "/" + resourceName + "/" + id + queryParams)).andExpect(method(HttpMethod.GET))
+        mockServer.expect(requestTo(resource.serviceUrl + "/" + resourceName + "/" + id)).andExpect(method(HttpMethod.GET))
                 .andRespond(withStatus(HttpStatus.NOT_FOUND).body(Util.readResourceFromFile("error_not_found.json")).contentType(MediaType.APPLICATION_JSON));
         T entity = resource.get(id);
         assertNull(entity);
@@ -100,15 +101,12 @@ public abstract class ResourceTestBase<T extends Entity> {
         
         T entity = (T) type.newInstance();
         entity.setId(id);
-        ResponseActions actions = mockServer.expect(requestTo(resource.serviceUrl + "/" + resourceName + "/" + id)).andExpect(method(HttpMethod.PUT));
+        mockServer.expect(requestTo(resource.serviceUrl + "/" + resourceName + "/" + id)).andExpect(method(HttpMethod.PUT))
+                .andRespond(withSuccess());
         
-        for(RequestMatcher m : generateExpectedSaveRequest()) {
-            actions = actions.andExpect(m);
-        }
-        
-        actions.andRespond(generateExpectedGetResponse());
-        
-        
+        mockServer.expect(requestTo(resource.serviceUrl + "/" + resourceName + "/" + id)).andExpect(method(HttpMethod.GET))
+                .andRespond(generateExpectedGetResponse());
+
         resource.save(entity);
         mockServer.verify();
         

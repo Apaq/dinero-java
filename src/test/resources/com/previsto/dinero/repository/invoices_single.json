@@ -1,74 +1,59 @@
 {
-  "meta": {
-    "statusCode": 200,
-    "success": true,
-    "time": 0.032207012176514
-  },
-  "invoice": {
-    "id": "cSHBqWWITexZvQy29lqpYg",
-    "organizationId": "07WgjDjARrWDUR0FAqEVEg",
-    "type": "invoice",
-    "createdTime": "2016-12-23T08:16:46",
-    "approvedTime": null,
-    "contactId": "DDAc0RmLQyelyZrv55JJKg",
-    "attContactPersonId": null,
-    "entryDate": "2016-12-23",
-    "paymentTermsMode": "netEndOfMonth",
-    "paymentTermsDays": 7,
-    "dueDate": "2017-01-07",
-    "state": "draft",
-    "sentState": "unsent",
-    "invoiceNo": null,
-    "taxMode": "incl",
-    "amount": 374.4,
-    "tax": 93.6,
-    "currencyId": "DKK",
-    "exchangeRate": 1,
-    "balance": 468,
-    "isPaid": false,
-    "creditedInvoiceId": null,
-    "contactMessage": "Husk at betale",
-    "lineDescription": "Vinduespudsning: Alt udevendigt, Vinduespudsning: Alt inde",
-    "recurringInvoiceId": null,
-    "templateId": "f0782ec9-39a5-4aae-b18b-322820a35241",
-    "downloadUrl": "https://api.billysbilling.com/v2/downloads/invoices/cSHBqWWITexZvQy29lqpYg/07WgjDjARrWDUR0FAqEVEg/f633ff4e61288a1730eb20d0db83acd0ac8d03698e33f048f4/draft-invoice.pdf",
-    "lines": [
-      {
-        "id": "rJOYmHUfQBecodHXkZF8qQ",
-        "invoiceId": "cSHBqWWITexZvQy29lqpYg",
-        "productId": "yb3MlJ6SQP2aG6VWU1CMfQ",
-        "description": "Alt udevendigt",
-        "quantity": 1,
-        "unitPrice": 123,
-        "amount": 123,
-        "tax": 24.6,
-        "taxRateId": "BHlRmdzLTQyTbw6n3MBBqw",
-        "discountText": null,
-        "discountMode": null,
-        "discountValue": null,
-        "priority": 1
-      },
-      {
-        "id": "yY6cT6yDS9WvOcwzxRqh8A",
-        "invoiceId": "cSHBqWWITexZvQy29lqpYg",
-        "productId": "yb3MlJ6SQP2aG6VWU1CMfQ",
-        "description": "Alt inde",
-        "quantity": 1,
-        "unitPrice": 345,
-        "amount": 345,
-        "tax": 69,
-        "taxRateId": "BHlRmdzLTQyTbw6n3MBBqw",
-        "discountText": null,
-        "discountMode": null,
-        "discountValue": null,
-        "priority": 2
-      }
-    ],
-    "orderNo": null,
-    "paymentMethods": [
-      {
-        "paymentMethodId": "a8da874c-3b65-422f-a166-e5f3516088b1"
-      }
-    ]
-  }
+  "PaymentDate": "2017-05-27",
+  "PaymentStatus": "Draft",
+  "PaymentConditionNumberOfDays": 8,
+  "PaymentConditionType": "Netto",
+  "Status": "Draft",
+  "ContactGuid": "716a3105-e8fd-4fdd-a886-0490b047986f",
+  "Guid": "2aa6fda2-9649-483e-82ec-094567eedfd6",
+  "TimeStamp": "0000000008766398",
+  "CreatedAt": "2017-05-19T14:20:47.407",
+  "UpdatedAt": "2017-05-19T14:20:47.407",
+  "DeletedAt": null,
+  "Number": 2,
+  "ContactName": "Børge Lund",
+  "ShowLinesInclVat": false,
+  "TotalExclVat": 0,
+  "TotalVatableAmount": 0,
+  "TotalInclVat": 0,
+  "TotalNonVatableAmount": 0,
+  "TotalVat": 0,
+  "TotalLines": [
+    {
+      "Type": "SubTotal",
+      "TotalAmount": 0,
+      "Position": 0,
+      "Label": "Subtotal"
+    },
+    {
+      "Type": "Total",
+      "TotalAmount": 0,
+      "Position": 2,
+      "Label": "Total DKK"
+    }
+  ],
+  "Currency": "DKK",
+  "Language": "da-DK",
+  "ExternalReference": null,
+  "Description": "Faktura",
+  "Comment": "",
+  "Date": "2017-05-19",
+  "ProductLines": [
+    {
+      "AccountName": "Salg af varer/ydelser m/moms",
+      "BaseAmountValue": 0,
+      "BaseAmountValueInclVat": 0,
+      "TotalAmount": 0,
+      "TotalAmountInclVat": 0,
+      "ProductGuid": null,
+      "Description": "",
+      "Comments": "",
+      "Quantity": 1,
+      "AccountNumber": 1000,
+      "Unit": "parts",
+      "Discount": 0,
+      "LineType": "Product"
+    }
+  ],
+  "Address": null
 }

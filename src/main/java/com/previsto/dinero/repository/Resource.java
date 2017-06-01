@@ -27,13 +27,15 @@ public abstract class Resource<T extends Persistable<String>> {
     protected final RestTemplate restTemplate;
     protected final String serviceUrl;
     protected String resourceName;
+    protected String fields;
     private Class clazz;
 
-    public Resource(Class clazz, String resourceName, RestTemplate restTemplate, String serviceUrl) {
+    public Resource(Class clazz, String resourceName, RestTemplate restTemplate, String serviceUrl, String fields) {
         this.resourceName = resourceName;
         this.restTemplate = restTemplate;
         this.serviceUrl = serviceUrl;
         this.clazz = clazz;
+        this.fields = fields;
     }
 
     public List<T> findAll() {
@@ -54,6 +56,10 @@ public abstract class Resource<T extends Persistable<String>> {
         if (pageRequest != null) {
             builder.queryParam("page", pageRequest.getPageNumber() + 1);
             builder.queryParam("pageSize", pageRequest.getPageSize());
+        }
+
+        if(fields != null) {
+            builder.queryParam("fields", fields);
         }
         
         url = builder.build().encode().toUri();
