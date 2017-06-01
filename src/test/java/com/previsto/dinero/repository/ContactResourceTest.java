@@ -30,7 +30,7 @@ public class ContactResourceTest extends ResourceTestBase<Contact> {
 
     @Override
     protected String generateExpectedGetQueryParams() {
-        return "?include=contact.city,contact.zipcode,contact.contactPersons:embed";
+        return "";
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.previsto.dinero.repository;
 
 import com.previsto.dinero.exception.RequestException;
+import com.previsto.dinero.exception.ResourceNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.ParameterizedTypeReference;
@@ -72,8 +73,12 @@ public abstract class Resource<T extends Persistable<String>> {
 
     public T get(String id) {
         URI uri = buildUri(id);
-        T entity = (T) restTemplate.getForObject(uri, clazz);
-        return entity;
+        try {
+            T entity = (T) restTemplate.getForObject(uri, clazz);
+            return entity;
+        } catch(ResourceNotFoundException ex) {
+            return null;
+        }
     }
 
     public void delete(T entity) {

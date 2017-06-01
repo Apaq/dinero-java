@@ -32,7 +32,7 @@ public class InvoiceResourceTest extends ResourceTestBase<Invoice> {
 
     @Override
     protected String generateExpectedGetQueryParams() {
-        return "?include=invoice.lines:embed";
+        return "";
     }
 
     @Override

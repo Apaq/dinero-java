@@ -29,7 +29,7 @@ public class AccountResourceTest extends ResourceTestBase<Account> {
 
     @Override
     protected String generateExpectedGetQueryParams() {
-        return "?include=account.group";
+        return "";
     }
 
     @Override
