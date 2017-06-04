@@ -31,7 +31,7 @@ Usage in Spring Boot
 application.yml
 ```yml
 dinero:
-  serviceUrl: http://billy.dk/api
+  serviceUrl: https://api.dinero.dk/v1
   apiKey: YOUR_API_KEY
 ```
 
@@ -41,10 +41,10 @@ DineroExample.java
 import com.previsto.dinero.model.Contact;
 
 @SpringBootApplication
-public class BillyExample {
+public class DineroExample {
 
     @AutoWired
-    private BillyClient client;
+    private DineroClient client;
     
     @PostConstruct
     private void init() {
