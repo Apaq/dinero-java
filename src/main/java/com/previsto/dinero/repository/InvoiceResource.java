@@ -3,8 +3,11 @@ package com.previsto.dinero.repository;
 import com.previsto.dinero.model.Invoice;
 
 import java.net.URI;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
+
+import com.previsto.dinero.model.PaymentData;
 import org.springframework.web.client.RestTemplate;
 
 public class InvoiceResource extends Resource<Invoice>{
@@ -16,7 +19,7 @@ public class InvoiceResource extends Resource<Invoice>{
     }
     
     public void book(String id) {
-        URI url = buildUri(id);
+        URI url = buildUri(id, "/book");
         
         restTemplate.postForEntity(url, null, Void.class);
     }
@@ -25,6 +28,19 @@ public class InvoiceResource extends Resource<Invoice>{
         URI url = buildUri(id, "/email");
         
         restTemplate.postForEntity(url, null, Void.class);
+    }
+
+    public void pay(String id, int depositAccountNumber, LocalDate paymentDate, long amount, String description, String externalReference) {
+        URI url = buildUri(id, "/payments");
+        PaymentData data = new PaymentData();
+        data.setTimestamp(Long.toHexString(System.currentTimeMillis()));
+        data.setAmount(((double)amount) / 100);
+        data.setDepositAccountNumber(depositAccountNumber);
+        data.setDescription(description);
+        data.setExternalReference(externalReference);
+        data.setPaymentDate(paymentDate);
+
+        restTemplate.postForEntity(url, data, Void.class);
     }
     
 }
