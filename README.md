@@ -1,5 +1,5 @@
 # Dinero Java Bindings 
-_This client is developed by [Previsto - planning for the service industry](https://previsto.com)  _
+_This client is developed by [Previsto - planning for the service industry](https://previsto.com)_
 
 Requirements
 ============
