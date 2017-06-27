@@ -1,6 +1,5 @@
 # Dinero Java Bindings 
-This client is developed by [Previsto - planning for the service industry](https://previsto.com)  
-You can sign up for a Dinero account at https://dinero.dk.
+_This client is developed by [Previsto - planning for the service industry](https://previsto.com)  _
 
 Requirements
 ============
