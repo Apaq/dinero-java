@@ -35,12 +35,9 @@ public class Test {
         Invoice invoice = new Invoice();
         invoice.setContactId(contact.getId());
         invoice.setCurrency("DKK");
-        InvoiceProductLine line = new InvoiceProductLine();
-        line.setBaseAmountValue(200);
-        line.setDescription("Test");
+        InvoiceProductLine line = new InvoiceProductLine(product);
         //line.setDiscountValue(0);
         //line.setDiscountMode(DiscountMode.PercentageDiscount);
-        line.setProductId(product.getId());
         invoice.getProductLines().add(line);
         invoice = client.getInvoiceResource().save(invoice);
         System.out.println(invoice);
