@@ -1,6 +1,7 @@
 package com.previsto.dinero.repository;
 
 import com.previsto.dinero.exception.RequestException;
+import com.previsto.dinero.exception.ResourceNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.ParameterizedTypeReference;
@@ -26,13 +27,15 @@ public abstract class Resource<T extends Persistable<String>> {
     protected final RestTemplate restTemplate;
     protected final String serviceUrl;
     protected String resourceName;
+    protected String fields;
     private Class clazz;
 
-    public Resource(Class clazz, String resourceName, RestTemplate restTemplate, String serviceUrl) {
+    public Resource(Class clazz, String resourceName, RestTemplate restTemplate, String serviceUrl, String fields) {
         this.resourceName = resourceName;
         this.restTemplate = restTemplate;
         this.serviceUrl = serviceUrl;
         this.clazz = clazz;
+        this.fields = fields;
     }
 
     public List<T> findAll() {
@@ -54,6 +57,10 @@ public abstract class Resource<T extends Persistable<String>> {
             builder.queryParam("page", pageRequest.getPageNumber() + 1);
             builder.queryParam("pageSize", pageRequest.getPageSize());
         }
+
+        if(fields != null) {
+            builder.queryParam("fields", fields);
+        }
         
         url = builder.build().encode().toUri();
         ResponseEntity resp = restTemplate.exchange(url, HttpMethod.GET, null, responseType);
@@ -72,8 +79,12 @@ public abstract class Resource<T extends Persistable<String>> {
 
     public T get(String id) {
         URI uri = buildUri(id);
-        T entity = (T) restTemplate.getForObject(uri, clazz);
-        return entity;
+        try {
+            T entity = (T) restTemplate.getForObject(uri, clazz);
+            return entity;
+        } catch(ResourceNotFoundException ex) {
+            return null;
+        }
     }
 
     public void delete(T entity) {

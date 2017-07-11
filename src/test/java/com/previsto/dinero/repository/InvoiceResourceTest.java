@@ -32,7 +32,7 @@ public class InvoiceResourceTest extends ResourceTestBase<Invoice> {
 
     @Override
     protected String generateExpectedGetQueryParams() {
-        return "?include=invoice.lines:embed";
+        return "?fields=Number,Guid,ContactName,Date,PaymentDate,Description,Currency,Status,MailOutStatus,TotalExclVatInDkk,TotalInclVatInDkk,TotalExclVat,TotalInclVat,CreatedAt,UpdatedAt,DeletedAt";
     }
 
     @Override
@@ -51,23 +51,18 @@ public class InvoiceResourceTest extends ResourceTestBase<Invoice> {
 
     @Override
     protected void doCheckEntity(Invoice entity) {
-        if ("UdsHDvAESV2eCZHSCYOfzA".equals(entity.getId())) {
-            assertEquals(LocalDateTime.parse("2016-12-23T08:18:20"), entity.getCreatedAt());
-            assertEquals(InvoiceStatus.Booked, entity.getInvoiceStatus());
+        if ("2aa6fda2-9649-483e-82ec-094567eedfd6".equals(entity.getId())) {
+            assertEquals(LocalDateTime.parse("2017-05-19T14:20:47.407"), entity.getCreatedAt());
+            assertEquals(InvoiceStatus.Draft, entity.getStatus());
             return;
         }
 
-        if ("cSHBqWWITexZvQy29lqpYg".equals(entity.getId())) {
-            assertEquals(LocalDateTime.parse("2016-12-23T08:16:46"), entity.getCreatedAt());
-            assertEquals(InvoiceStatus.Draft, entity.getInvoiceStatus());
+        if ("626911cd-e133-43cc-a73d-d4c6a6bc7501".equals(entity.getId())) {
+            assertEquals(LocalDateTime.parse("2017-05-19T14:15:29.55"), entity.getCreatedAt());
+            assertEquals(InvoiceStatus.Overdue, entity.getStatus());
             return;
         }
 
-        if ("o9bpexuzTb25IfEgW7E1Wg".equals(entity.getId())) {
-            assertEquals(LocalDateTime.parse("2016-12-23T08:13:48"), entity.getCreatedAt());
-            assertEquals(InvoiceStatus.Booked, entity.getInvoiceStatus());
-            return;
-        }
         throw new RuntimeException("Unexpected contact entity [id=" + entity.getId() + "]");
     }
 

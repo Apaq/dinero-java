@@ -1,14 +1,13 @@
 {
-  "meta": {
-    "statusCode": 400,
-    "success": false
-  },
-  "errorMessage": "Invalid record",
-  "errorCode": "INVALID_RECORD",
-  "helpUrl": "https://billysbilling.com/api",
-  "validationErrors": {
-    "invoice": {
-      "message": "Invoices must have at least one invoice line."
+  "code": 40,
+  "message": "Invoices must have at least one invoice line",
+  "languageSpecificMessages": [
+    {
+      "property": "line",
+      "message": "Whooho"
     }
+  ],
+  "validationErrors": {
+
   }
 }

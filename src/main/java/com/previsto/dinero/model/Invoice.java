@@ -1,13 +1,10 @@
 package com.previsto.dinero.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.springframework.data.domain.Persistable;
 
-import java.time.Instant;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,14 +12,16 @@ public class Invoice extends ArchivableEntity implements Entity {
 
     private LocalDate paymentDate;
     private PaymentStatus paymentStatus = PaymentStatus.Draft;
-    private int paymentConditionNumberOfDays;
-    private PaymentConditionType paymentConditionType = PaymentConditionType.Netto;
-    private InvoiceStatus invoiceStatus = InvoiceStatus.Draft;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Integer paymentConditionNumberOfDays;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private PaymentConditionType paymentConditionType;
+    private InvoiceStatus status = InvoiceStatus.Draft;
     @JsonProperty("ContactGuid")
     private String contactId;
     @JsonProperty("Guid")
     private String id;
-    private int number;
+    private long number;
     private String contactName;
     private boolean showLinesInclVat;
     private double totalExclVat;
@@ -39,6 +38,9 @@ public class Invoice extends ArchivableEntity implements Entity {
     private LocalDate date;
     private List<InvoiceProductLine> productLines = new ArrayList<>();
     private String address;
+    @JsonProperty("TimeStamp") // <-- Observe the extreme lazyness of Dinero API developers
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String timestamp;
 
     @Override
     @JsonIgnore
@@ -62,11 +64,11 @@ public class Invoice extends ArchivableEntity implements Entity {
         this.paymentStatus = paymentStatus;
     }
 
-    public int getPaymentConditionNumberOfDays() {
+    public Integer getPaymentConditionNumberOfDays() {
         return paymentConditionNumberOfDays;
     }
 
-    public void setPaymentConditionNumberOfDays(int paymentConditionNumberOfDays) {
+    public void setPaymentConditionNumberOfDays(Integer paymentConditionNumberOfDays) {
         this.paymentConditionNumberOfDays = paymentConditionNumberOfDays;
     }
 
@@ -78,12 +80,12 @@ public class Invoice extends ArchivableEntity implements Entity {
         this.paymentConditionType = paymentConditionType;
     }
 
-    public InvoiceStatus getInvoiceStatus() {
-        return invoiceStatus;
+    public InvoiceStatus getStatus() {
+        return status;
     }
 
-    public void setInvoiceStatus(InvoiceStatus invoiceStatus) {
-        this.invoiceStatus = invoiceStatus;
+    public void setStatus(InvoiceStatus status) {
+        this.status = status;
     }
 
     public String getContactId() {
@@ -103,11 +105,11 @@ public class Invoice extends ArchivableEntity implements Entity {
         this.id = id;
     }
 
-    public int getNumber() {
+    public long getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(long number) {
         this.number = number;
     }
 
@@ -237,5 +239,13 @@ public class Invoice extends ArchivableEntity implements Entity {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
     }
 }

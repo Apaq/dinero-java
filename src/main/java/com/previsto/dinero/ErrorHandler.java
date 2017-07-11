@@ -30,7 +30,8 @@ public class ErrorHandler implements ResponseErrorHandler {
         } else if (response.getRawStatusCode() == 401 || response.getRawStatusCode() == 403) {
             clazz = AuthenticationException.class;
         } else if (response.getRawStatusCode() == 404) {
-            clazz = ResourceNotFoundException.class;
+            // Dinero just throws HTML back at 404's. Do not try to parse json
+            throw new ResourceNotFoundException(404, "The requested resource was not found.");
         } else {
             clazz = RequestException.class;
         }

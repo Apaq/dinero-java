@@ -20,7 +20,7 @@ public class Product extends ArchivableEntity {
     private double baseAmountValue;
     private double quantity;
     private int accountNumber;
-    private String unit = "parts";
+    private UnitType unit = UnitType.Parts;
 
     @Override
     @JsonIgnore
@@ -101,11 +101,11 @@ public class Product extends ArchivableEntity {
         this.accountNumber = accountNumber;
     }
 
-    public String getUnit() {
+    public UnitType getUnit() {
         return unit;
     }
 
-    public void setUnit(String unit) {
+    public void setUnit(UnitType unit) {
         this.unit = unit;
     }
 }

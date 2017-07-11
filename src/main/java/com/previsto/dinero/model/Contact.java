@@ -1,6 +1,7 @@
 package com.previsto.dinero.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.data.domain.Persistable;
 
@@ -23,7 +24,8 @@ public class Contact extends ArchivableEntity {
     private String attPerson;
     private String vatNumber;
     private PaymentConditionType paymentConditionType;
-    private int paymentConditionNumberOfDays;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Integer paymentConditionNumberOfDays;
     private boolean isDebitor;
     private boolean isCreditor;
     private String webpage;
@@ -140,11 +142,11 @@ public class Contact extends ArchivableEntity {
         this.paymentConditionType = paymentConditionType;
     }
 
-    public int getPaymentConditionNumberOfDays() {
+    public Integer getPaymentConditionNumberOfDays() {
         return paymentConditionNumberOfDays;
     }
 
-    public void setPaymentConditionNumberOfDays(int paymentConditionNumberOfDays) {
+    public void setPaymentConditionNumberOfDays(Integer paymentConditionNumberOfDays) {
         this.paymentConditionNumberOfDays = paymentConditionNumberOfDays;
     }
 

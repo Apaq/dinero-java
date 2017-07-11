@@ -30,12 +30,12 @@ public class ContactResourceTest extends ResourceTestBase<Contact> {
 
     @Override
     protected String generateExpectedGetQueryParams() {
-        return "?include=contact.city,contact.zipcode,contact.contactPersons:embed";
+        return "?fields=ContactGuid,CreatedAt,UpdatedAt,DeletedAt,IsDebitor,IsCreditor,ExternalReference,Name,Street,ZipCode,City,CountryKey,Phone,Email,Webpage,AttPerson,VatNumber,EanNumber,PaymentConditionType,PaymentConditionNumberOfDays,IsPerson";
     }
 
     @Override
     protected String generateSingularId() {
-        return "DDAc0RmLQyelyZrv55JJKg";
+        return "716a3105-e8fd-4fdd-a886-0490b047986f";
     }
     
     @Override
@@ -50,13 +50,13 @@ public class ContactResourceTest extends ResourceTestBase<Contact> {
 
     @Override
     protected void doCheckEntity(Contact entity) {
-        if ("EkoYx6TBSPC7rixfDCaM1Q".equals(entity.getId())) {
-            assertEquals(LocalDateTime.parse("2016-12-23T08:06:07"), entity.getCreatedAt());
+        if ("716a3105-e8fd-4fdd-a886-0490b047986f".equals(entity.getId())) {
+            assertEquals(LocalDateTime.parse("2017-05-19T14:14:47"), entity.getCreatedAt());
             return;
         }
 
-        if ("DDAc0RmLQyelyZrv55JJKg".equals(entity.getId())) {
-            assertEquals(LocalDateTime.parse("2016-12-23T08:06:40"), entity.getCreatedAt());
+        if ("345af4c6-0867-4040-8fb9-62625b5ef3c1".equals(entity.getId())) {
+            assertEquals(LocalDateTime.parse("2017-05-20T17:15:00"), entity.getCreatedAt());
             return;
         }
 

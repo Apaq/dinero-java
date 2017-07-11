@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class AuthenticationException extends DineroException {
 
     @JsonCreator
-    public AuthenticationException(int code, String message) {
+    public AuthenticationException(@JsonProperty(value = "code") int code, @JsonProperty(value = "message") String message) {
         super(message, code);
     }
 

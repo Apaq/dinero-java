@@ -2,8 +2,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.previsto</groupId>
-    <artifactId>billy-java</artifactId>
-    <version>1.0.6-SNAPSHOT</version>
+    <artifactId>dinero-java</artifactId>
+    <version>1.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
     
     <parent>
@@ -13,9 +13,9 @@
     </parent>
     
     <scm>
-        <connection>scm:git:https://github.com/Previsto/billy-java.git</connection>
-        <developerConnection>scm:git:git@github.com:Previsto/billy-java.git</developerConnection>
-        <url>https://github.com/Previsto/billy-java</url>
+        <connection>scm:git:https://github.com/Previsto/dinero-java.git</connection>
+        <developerConnection>scm:git:git@github.com:Previsto/dinero-java.git</developerConnection>
+        <url>https://github.com/Previsto/dinero-java</url>
       <tag>HEAD</tag>
   </scm>
     
@@ -140,7 +140,7 @@
                 <version>0.7.5.201505241946</version>
                 <configuration>
                     <excludes>
-                        <exclude>com/previsto/billy/model/**</exclude>
+                        <exclude>com/previsto/dinero/model/**</exclude>
                     </excludes>
                 </configuration>
                 <executions>

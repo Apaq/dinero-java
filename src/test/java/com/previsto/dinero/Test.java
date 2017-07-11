@@ -1,9 +1,8 @@
 package com.previsto.dinero;
 
-import com.previsto.dinero.model.Contact;
-import com.previsto.dinero.model.Invoice;
-import com.previsto.dinero.model.InvoiceProductLine;
-import com.previsto.dinero.model.Product;
+import com.previsto.dinero.model.*;
+
+import java.time.LocalDate;
 
 public class Test {
 
@@ -21,33 +20,54 @@ public class Test {
         contact.setStreet("Fyensgade 16, 1. th.");
         contact.setZipCode("9000");
         contact.setCity("Aalborg");
+        contact.setEmail("mic@apaq.dk");
         contact = client.getContactResource().save(contact);
         
         System.out.println(contact);
         
-        Product product = new Product();
+        /*Product product = new Product();
         product.setName("Vinduespolering");
         product.setProductNumber("TEST_CODE");
         product.setAccountNumber(1000);
         //product.setSalesTaxRulesetId(org.getDefaultSalesTaxRulesetId());
-        product = client.getProductResource().save(product);
+        product = client.getProductResource().save(product);*/
         
         Invoice invoice = new Invoice();
         invoice.setContactId(contact.getId());
         invoice.setCurrency("DKK");
-        InvoiceProductLine line = new InvoiceProductLine(product);
+        InvoiceProductLine line = new InvoiceProductLine();
+        line.setBaseAmountValue(200);
+        line.setDescription("Test");
+        line.setAccountNumber(1000);
+        line.setUnit(UnitType.Session);
+        line.setQuantity(1);
         //line.setDiscountValue(0);
         //line.setDiscountMode(DiscountMode.PercentageDiscount);
+        //line.setProductId(product.getId());
+
         invoice.getProductLines().add(line);
         invoice = client.getInvoiceResource().save(invoice);
         System.out.println(invoice);
-        
+
+        client.getInvoiceResource().book(invoice);
+        client.getInvoiceResource().email(invoice.getId());
+
+        invoice = client.getInvoiceResource().get(invoice.getId());
+        client.getInvoiceResource().pay(invoice,
+                55040,
+                LocalDate.now(),
+                1000,
+                "Betaling via Previsto",
+                "previsto-id");
+
+        invoice = client.getInvoiceResource().get(invoice.getId());
+        System.out.println(invoice);
         //client.getInvoiceResource().approve(invoice.getId());
         
 
-        client.getInvoiceResource().delete(invoice);
-        client.getContactResource().delete(contact);
-        client.getProductResource().delete(product);
+        //client.getInvoiceResource().delete(invoice);
+        //client.getContactResource().delete(contact);
+        //client.getProductResource().delete(product);
         
     }
 }

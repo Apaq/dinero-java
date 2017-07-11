@@ -1,46 +1,23 @@
 {
-  "meta": {
-    "statusCode": 200,
-    "success": true,
-    "time": 0.039310932159424
-  },
-  "contact": {
-    "id": "DDAc0RmLQyelyZrv55JJKg",
-    "type": "person",
-    "organizationId": "07WgjDjARrWDUR0FAqEVEg",
-    "createdTime": "2016-12-23T08:06:40",
-    "name": "Hannah Krog",
-    "countryId": "DK",
-    "street": "Bornholmsgade 57",
-    "cityId": "dk_aalborg",
-    "cityText": "",
-    "stateId": null,
-    "stateText": "",
-    "zipcodeId": null,
-    "zipcodeText": "9000",
-    "contactNo": "",
-    "phone": "",
-    "fax": "",
-    "currencyId": null,
-    "registrationNo": "",
-    "ean": "",
-    "localeId": null,
-    "isCustomer": true,
-    "isSupplier": true,
-    "paymentTermsMode": null,
-    "paymentTermsDays": null,
-    "accessCode": "1forbvx0IIvEJDh6",
-    "emailAttachmentDeliveryMode": null,
-    "isArchived": false,
-    "isSalesTaxExempt": false
-  },
-  "cities": [
-    {
-      "id": "dk_aalborg",
-      "name": "Aalborg",
-      "county": "",
-      "stateId": null,
-      "countryId": "DK"
-    }
-  ]
+  "ContactGuid": "716a3105-e8fd-4fdd-a886-0490b047986f",
+  "CreatedAt": "2017-05-19T14:14:47",
+  "UpdatedAt": "2017-05-19T14:14:47",
+  "DeletedAt": null,
+  "IsDebitor": false,
+  "IsCreditor": false,
+  "ExternalReference": null,
+  "Name": "Børge Lund",
+  "Street": "Støvringparken 10, st. th",
+  "ZipCode": "9530",
+  "City": "Støvring",
+  "CountryKey": "DK",
+  "Phone": null,
+  "Email": null,
+  "Webpage": null,
+  "AttPerson": null,
+  "VatNumber": null,
+  "EanNumber": null,
+  "PaymentConditionType": "Netto",
+  "PaymentConditionNumberOfDays": 8,
+  "IsPerson": true
 }

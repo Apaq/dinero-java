@@ -8,7 +8,7 @@ import org.springframework.web.client.RestTemplate;
 public class AccountResource extends Resource<Account>{
     
     public AccountResource(RestTemplate restTemplate, String serviceUrl) {
-        super(Account.class, "accounts", restTemplate, serviceUrl);
+        super(Account.class, "accounts", restTemplate, serviceUrl, null);
     }
     
 }

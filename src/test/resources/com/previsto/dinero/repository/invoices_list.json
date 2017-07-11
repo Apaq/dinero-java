@@ -1,187 +1,40 @@
-
 {
-  "meta": {
-    "statusCode": 200,
-    "success": true,
-    "paging": {
-      "page": 1,
-      "pageSize": 1000,
-      "pageCount": 1,
-      "total": 3
-    },
-    "time": 0.05702805519104
-  },
-  "invoices": [
+  "Collection": [
     {
-      "id": "UdsHDvAESV2eCZHSCYOfzA",
-      "organizationId": "07WgjDjARrWDUR0FAqEVEg",
-      "type": "invoice",
-      "createdTime": "2016-12-23T08:18:20",
-      "approvedTime": "2016-12-23T08:18:20",
-      "contactId": "EraCis1gQfKClaldW0EJHA",
-      "attContactPersonId": null,
-      "entryDate": "2016-12-23",
-      "paymentTermsMode": "date",
-      "paymentTermsDays": null,
-      "dueDate": "2016-12-30",
-      "state": "approved",
-      "sentState": "unsent",
-      "invoiceNo": "2",
-      "taxMode": "excl",
-      "amount": 300,
-      "tax": 75,
-      "currencyId": "DKK",
-      "exchangeRate": 1,
-      "balance": 375,
-      "isPaid": false,
-      "creditedInvoiceId": null,
-      "contactMessage": "",
-      "lineDescription": "Vinduespudsning: Alt ude",
-      "recurringInvoiceId": null,
-      "templateId": "f0782ec9-39a5-4aae-b18b-322820a35241",
-      "downloadUrl": "https://api.billysbilling.com/v2/downloads/invoices/UdsHDvAESV2eCZHSCYOfzA/07WgjDjARrWDUR0FAqEVEg/807fcddf191de8efad8347912b22ecb77a81fb0531e0bd43d2/invoice-no-2.pdf",
-      "lines": [
-        {
-          "id": "n59DLGWBRm6itDkze5w9Xg",
-          "invoiceId": "UdsHDvAESV2eCZHSCYOfzA",
-          "productId": "yb3MlJ6SQP2aG6VWU1CMfQ",
-          "description": "Alt ude",
-          "quantity": 1,
-          "unitPrice": 300,
-          "amount": 300,
-          "tax": 75,
-          "taxRateId": "BHlRmdzLTQyTbw6n3MBBqw",
-          "discountText": null,
-          "discountMode": null,
-          "discountValue": null,
-          "priority": 1
-        }
-      ],
-      "orderNo": null,
-      "paymentMethods": [
-        {
-          "paymentMethodId": "a8da874c-3b65-422f-a166-e5f3516088b1"
-        }
-      ]
+      "Number": 9223372036854775807,
+      "Guid": "2aa6fda2-9649-483e-82ec-094567eedfd6",
+      "ContactName": "Børge Lund",
+      "Date": "2017-05-19",
+      "PaymentDate": "2017-05-27",
+      "Description": "Faktura",
+      "Currency": "DKK",
+      "Status": "Draft",
+      "MailOutStatus": "NotSent",
+      "TotalExclVatInDkk": 0,
+      "TotalInclVatInDkk": 0,
+      "TotalExclVat": 0,
+      "TotalInclVat": 0,
+      "CreatedAt": "2017-05-19T14:20:47.407",
+      "UpdatedAt": "2017-05-19T14:20:47.407",
+      "DeletedAt": null
     },
     {
-      "id": "cSHBqWWITexZvQy29lqpYg",
-      "organizationId": "07WgjDjARrWDUR0FAqEVEg",
-      "type": "invoice",
-      "createdTime": "2016-12-23T08:16:46",
-      "approvedTime": null,
-      "contactId": "DDAc0RmLQyelyZrv55JJKg",
-      "attContactPersonId": null,
-      "entryDate": "2016-12-23",
-      "paymentTermsMode": "netEndOfMonth",
-      "paymentTermsDays": 7,
-      "dueDate": "2017-01-07",
-      "state": "draft",
-      "sentState": "unsent",
-      "invoiceNo": null,
-      "taxMode": "incl",
-      "amount": 374.4,
-      "tax": 93.6,
-      "currencyId": "DKK",
-      "exchangeRate": 1,
-      "balance": 468,
-      "isPaid": false,
-      "creditedInvoiceId": null,
-      "contactMessage": "Husk at betale",
-      "lineDescription": "Vinduespudsning: Alt udevendigt, Vinduespudsning: Alt inde",
-      "recurringInvoiceId": null,
-      "templateId": "f0782ec9-39a5-4aae-b18b-322820a35241",
-      "downloadUrl": "https://api.billysbilling.com/v2/downloads/invoices/cSHBqWWITexZvQy29lqpYg/07WgjDjARrWDUR0FAqEVEg/39f27ed696478c797e81684f6370942a3717a1efa4f7123c5e/draft-invoice.pdf",
-      "lines": [
-        {
-          "id": "rJOYmHUfQBecodHXkZF8qQ",
-          "invoiceId": "cSHBqWWITexZvQy29lqpYg",
-          "productId": "yb3MlJ6SQP2aG6VWU1CMfQ",
-          "description": "Alt udevendigt",
-          "quantity": 1,
-          "unitPrice": 123,
-          "amount": 123,
-          "tax": 24.6,
-          "taxRateId": "BHlRmdzLTQyTbw6n3MBBqw",
-          "discountText": null,
-          "discountMode": null,
-          "discountValue": null,
-          "priority": 1
-        },
-        {
-          "id": "yY6cT6yDS9WvOcwzxRqh8A",
-          "invoiceId": "cSHBqWWITexZvQy29lqpYg",
-          "productId": "yb3MlJ6SQP2aG6VWU1CMfQ",
-          "description": "Alt inde",
-          "quantity": 1,
-          "unitPrice": 345,
-          "amount": 345,
-          "tax": 69,
-          "taxRateId": "BHlRmdzLTQyTbw6n3MBBqw",
-          "discountText": null,
-          "discountMode": null,
-          "discountValue": null,
-          "priority": 2
-        }
-      ],
-      "orderNo": null,
-      "paymentMethods": [
-        {
-          "paymentMethodId": "a8da874c-3b65-422f-a166-e5f3516088b1"
-        }
-      ]
-    },
-    {
-      "id": "o9bpexuzTb25IfEgW7E1Wg",
-      "organizationId": "07WgjDjARrWDUR0FAqEVEg",
-      "type": "invoice",
-      "createdTime": "2016-12-23T08:13:48",
-      "approvedTime": "2016-12-23T08:13:48",
-      "contactId": "EkoYx6TBSPC7rixfDCaM1Q",
-      "attContactPersonId": null,
-      "entryDate": "2016-12-23",
-      "paymentTermsMode": "net",
-      "paymentTermsDays": 7,
-      "dueDate": "2016-12-30",
-      "state": "approved",
-      "sentState": "unsent",
-      "invoiceNo": "1",
-      "taxMode": "excl",
-      "amount": 250,
-      "tax": 62.5,
-      "currencyId": "DKK",
-      "exchangeRate": 1,
-      "balance": 312.5,
-      "isPaid": false,
-      "creditedInvoiceId": null,
-      "contactMessage": "",
-      "lineDescription": "Vinduespudsning",
-      "recurringInvoiceId": null,
-      "templateId": "f0782ec9-39a5-4aae-b18b-322820a35241",
-      "downloadUrl": "https://api.billysbilling.com/v2/downloads/invoices/o9bpexuzTb25IfEgW7E1Wg/07WgjDjARrWDUR0FAqEVEg/36ba741ae8cedc195afae898260e5e248ec776b822a34a8f9d/invoice-no-1.pdf",
-      "lines": [
-        {
-          "id": "xEXmZN3hSQejOI3sUK5dew",
-          "invoiceId": "o9bpexuzTb25IfEgW7E1Wg",
-          "productId": "yb3MlJ6SQP2aG6VWU1CMfQ",
-          "description": "",
-          "quantity": 1,
-          "unitPrice": 250,
-          "amount": 250,
-          "tax": 62.5,
-          "taxRateId": "BHlRmdzLTQyTbw6n3MBBqw",
-          "discountText": null,
-          "discountMode": null,
-          "discountValue": null,
-          "priority": 1
-        }
-      ],
-      "orderNo": null,
-      "paymentMethods": [
-        {
-          "paymentMethodId": "a8da874c-3b65-422f-a166-e5f3516088b1"
-        }
-      ]
+      "Number": 1,
+      "Guid": "626911cd-e133-43cc-a73d-d4c6a6bc7501",
+      "ContactName": "Børge Lund",
+      "Date": "2017-05-19",
+      "PaymentDate": "2017-05-27",
+      "Description": "Faktura",
+      "Currency": "DKK",
+      "Status": "Overdue",
+      "MailOutStatus": "NotSent",
+      "TotalExclVatInDkk": 200,
+      "TotalInclVatInDkk": 250,
+      "TotalExclVat": 200,
+      "TotalInclVat": 250,
+      "CreatedAt": "2017-05-19T14:15:29.55",
+      "UpdatedAt": "2017-05-19T14:15:30.43",
+      "DeletedAt": null
     }
   ]
 }

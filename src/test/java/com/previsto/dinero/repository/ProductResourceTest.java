@@ -28,7 +28,7 @@ public class ProductResourceTest extends ResourceTestBase<Product> {
 
     @Override
     protected String generateExpectedGetQueryParams() {
-        return "";
+        return "?fields=ProductGuid,Name,Quantity,Unit,AccountNumber,BaseAmountValue,BaseAmountValueInclVat,TotalAmount,TotalAmountInclVat,CreatedAt,UpdatedAt,DeletedAt,ProductNumber";
     }
 
     @Override
@@ -44,8 +44,13 @@ public class ProductResourceTest extends ResourceTestBase<Product> {
 
     @Override
     protected void doCheckEntity(Product entity) {
-        if ("ksSgZEGPQmGohQ9eWxVOoQ".equals(entity.getId())) {
-            assertEquals("WC_PREVISTO", entity.getProductNumber());
+        if ("eb4b43d4-1996-475f-8b9f-782be605227c".equals(entity.getId())) {
+            assertEquals(null, entity.getProductNumber());
+            return;
+        }
+
+        if ("bea45ed0-df16-4fd3-84de-8249c4ab23cf".equals(entity.getId())) {
+            assertEquals("TEST_CODE", entity.getProductNumber());
             return;
         }
 
