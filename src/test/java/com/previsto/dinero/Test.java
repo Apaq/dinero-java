@@ -12,9 +12,12 @@ public class Test {
                 "ZfnZyhqoc3B7q9GDKEAToD0W5xTbnlEwMlf3YIPQE", "148383",
                 "33591216d5184eb39bf8f564f223b9b9",
                 "https://authz.dinero.dk/dineroapi/oauth/token", "https://api.dinero.dk/v1");
-        
+
+        for(int i=0;i<10;i++) {
+            client.getContactResource().findAll();
+        }
         //Page<Contact> contacts = client.getContactResource().findAll(new PageRequest(0, 2));
-        Contact contact = new Contact();
+        /*Contact contact = new Contact();
         contact.setCreditor(true);
         contact.setName("Apaq");
         contact.setStreet("Fyensgade 16, 1. th.");
@@ -23,7 +26,7 @@ public class Test {
         contact.setEmail("mic@apaq.dk");
         contact = client.getContactResource().save(contact);
         
-        System.out.println(contact);
+        System.out.println(contact);*/
         
         /*Product product = new Product();
         product.setName("Vinduespolering");
@@ -32,7 +35,7 @@ public class Test {
         //product.setSalesTaxRulesetId(org.getDefaultSalesTaxRulesetId());
         product = client.getProductResource().save(product);*/
         
-        Invoice invoice = new Invoice();
+       /* Invoice invoice = new Invoice();
         invoice.setContactId(contact.getId());
         invoice.setCurrency("DKK");
         InvoiceProductLine line = new InvoiceProductLine();
@@ -61,7 +64,7 @@ public class Test {
                 "previsto-id");
 
         invoice = client.getInvoiceResource().get(invoice.getId());
-        System.out.println(invoice);
+        System.out.println(invoice);*/
         //client.getInvoiceResource().approve(invoice.getId());
         
 
