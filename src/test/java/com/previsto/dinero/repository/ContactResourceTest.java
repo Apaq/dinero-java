@@ -30,7 +30,7 @@ public class ContactResourceTest extends ResourceTestBase<Contact> {
 
     @Override
     protected String generateExpectedGetQueryParams() {
-        return "?fields=ContactGuid,CreatedAt,UpdatedAt,DeletedAt,IsDebitor,IsCreditor,ExternalReference,Name,Street,ZipCode,City,CountryKey,Phone,Email,Webpage,AttPerson,VatNumber,EanNumber,PaymentConditionType,PaymentConditionNumberOfDays,IsPerson";
+        return "?page=1&pageSize=1000&fields=ContactGuid,CreatedAt,UpdatedAt,DeletedAt,IsDebitor,IsCreditor,ExternalReference,Name,Street,ZipCode,City,CountryKey,Phone,Email,Webpage,AttPerson,VatNumber,EanNumber,PaymentConditionType,PaymentConditionNumberOfDays,IsPerson";
     }
 
     @Override
