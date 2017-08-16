@@ -1,6 +1,7 @@
 package com.previsto.dinero.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.time.LocalDate;
@@ -11,8 +12,10 @@ public class Invoice extends ArchivableEntity implements Entity {
 
     private LocalDate paymentDate;
     private PaymentStatus paymentStatus = PaymentStatus.Draft;
-    private int paymentConditionNumberOfDays;
-    private PaymentConditionType paymentConditionType = PaymentConditionType.Netto;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Integer paymentConditionNumberOfDays;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private PaymentConditionType paymentConditionType;
     private InvoiceStatus status = InvoiceStatus.Draft;
     @JsonProperty("ContactGuid")
     private String contactId;
@@ -35,6 +38,9 @@ public class Invoice extends ArchivableEntity implements Entity {
     private LocalDate date;
     private List<InvoiceProductLine> productLines = new ArrayList<>();
     private String address;
+    @JsonProperty("TimeStamp") // <-- Observe the extreme lazyness of Dinero API developers
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String timestamp;
 
     @Override
     @JsonIgnore
@@ -58,11 +64,11 @@ public class Invoice extends ArchivableEntity implements Entity {
         this.paymentStatus = paymentStatus;
     }
 
-    public int getPaymentConditionNumberOfDays() {
+    public Integer getPaymentConditionNumberOfDays() {
         return paymentConditionNumberOfDays;
     }
 
-    public void setPaymentConditionNumberOfDays(int paymentConditionNumberOfDays) {
+    public void setPaymentConditionNumberOfDays(Integer paymentConditionNumberOfDays) {
         this.paymentConditionNumberOfDays = paymentConditionNumberOfDays;
     }
 
@@ -233,5 +239,13 @@ public class Invoice extends ArchivableEntity implements Entity {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
     }
 }

@@ -5,6 +5,8 @@ import org.springframework.data.domain.Page;
 
 import java.util.List;
 
+import java.time.LocalDate;
+
 public class Test {
 
     public static void main(String[] args) {
@@ -22,6 +24,7 @@ public class Test {
         contact.setStreet("Fyensgade 16, 1. th.");
         contact.setZipCode("9000");
         contact.setCity("Aalborg");
+        contact.setEmail("mic@apaq.dk");
         contact = client.getContactResource().save(contact);
         
         System.out.println(contact);*/
@@ -33,7 +36,7 @@ public class Test {
         //product.setSalesTaxRulesetId(org.getDefaultSalesTaxRulesetId());
         product = client.getProductResource().save(product);*/
         
-        /*Invoice invoice = new Invoice();
+       /* Invoice invoice = new Invoice();
         invoice.setContactId(contact.getId());
         invoice.setCurrency("DKK");
         InvoiceProductLine line = new InvoiceProductLine();
@@ -46,6 +49,7 @@ public class Test {
         invoice = client.getInvoiceResource().save(invoice);
         System.out.println(invoice);*/
         
+
         //client.getInvoiceResource().approve(invoice.getId());
         
 

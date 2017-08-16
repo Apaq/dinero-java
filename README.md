@@ -1,6 +1,5 @@
 # Dinero Java Bindings 
-
-You can sign up for a Dinero account at https://dinero.dk.
+_This client is developed by [Previsto - planning for the service industry](https://previsto.com)_
 
 Requirements
 ============
@@ -31,7 +30,7 @@ Usage in Spring Boot
 application.yml
 ```yml
 dinero:
-  serviceUrl: http://billy.dk/api
+  serviceUrl: https://api.dinero.dk/v1
   apiKey: YOUR_API_KEY
 ```
 
@@ -41,10 +40,10 @@ DineroExample.java
 import com.previsto.dinero.model.Contact;
 
 @SpringBootApplication
-public class BillyExample {
+public class DineroExample {
 
     @AutoWired
-    private BillyClient client;
+    private DineroClient client;
     
     @PostConstruct
     private void init() {

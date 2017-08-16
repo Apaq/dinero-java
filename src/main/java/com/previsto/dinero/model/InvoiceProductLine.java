@@ -19,6 +19,17 @@ public class InvoiceProductLine {
     private double discount;
     private String lineType;
 
+    public InvoiceProductLine() { /* */ }
+
+    public InvoiceProductLine(Product product) {
+        this.accountNumber = product.getAccountNumber();
+        this.unit = product.getUnit();
+        this.quantity = 1;
+        this.description = product.getName();
+        this.baseAmountValue = product.getBaseAmountValue();
+        this.productId = product.getId();
+    }
+
     public String getAccountName() {
         return accountName;
     }
