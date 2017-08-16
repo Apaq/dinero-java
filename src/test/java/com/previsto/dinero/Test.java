@@ -1,6 +1,9 @@
 package com.previsto.dinero;
 
 import com.previsto.dinero.model.*;
+import org.springframework.data.domain.Page;
+
+import java.util.List;
 
 import java.time.LocalDate;
 
@@ -12,11 +15,9 @@ public class Test {
                 "ZfnZyhqoc3B7q9GDKEAToD0W5xTbnlEwMlf3YIPQE", "148383",
                 "33591216d5184eb39bf8f564f223b9b9",
                 "https://authz.dinero.dk/dineroapi/oauth/token", "https://api.dinero.dk/v1");
-
-        for(int i=0;i<10;i++) {
-            client.getContactResource().findAll();
-        }
-        //Page<Contact> contacts = client.getContactResource().findAll(new PageRequest(0, 2));
+        
+        List<Contact> contacts = client.getContactResource().findAll();
+        System.out.println(contacts);
         /*Contact contact = new Contact();
         contact.setCreditor(true);
         contact.setName("Apaq");
@@ -44,27 +45,11 @@ public class Test {
         line.setAccountNumber(1000);
         line.setUnit(UnitType.Session);
         line.setQuantity(1);
-        //line.setDiscountValue(0);
-        //line.setDiscountMode(DiscountMode.PercentageDiscount);
-        //line.setProductId(product.getId());
-
         invoice.getProductLines().add(line);
         invoice = client.getInvoiceResource().save(invoice);
-        System.out.println(invoice);
-
-        client.getInvoiceResource().book(invoice);
-        client.getInvoiceResource().email(invoice.getId());
-
-        invoice = client.getInvoiceResource().get(invoice.getId());
-        client.getInvoiceResource().pay(invoice,
-                55040,
-                LocalDate.now(),
-                1000,
-                "Betaling via Previsto",
-                "previsto-id");
-
-        invoice = client.getInvoiceResource().get(invoice.getId());
         System.out.println(invoice);*/
+        
+
         //client.getInvoiceResource().approve(invoice.getId());
         
 
