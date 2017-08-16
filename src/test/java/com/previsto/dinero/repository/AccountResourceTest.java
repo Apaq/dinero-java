@@ -29,7 +29,7 @@ public class AccountResourceTest extends ResourceTestBase<Account> {
 
     @Override
     protected String generateExpectedGetQueryParams() {
-        return "";
+        return "?page=1&pageSize=1000";
     }
 
     @Override
