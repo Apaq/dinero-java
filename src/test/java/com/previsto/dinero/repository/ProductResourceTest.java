@@ -28,7 +28,7 @@ public class ProductResourceTest extends ResourceTestBase<Product> {
 
     @Override
     protected String generateExpectedGetQueryParams() {
-        return "?page=1&pageSize=1000&fields=ProductGuid,Name,Quantity,Unit,AccountNumber,BaseAmountValue,BaseAmountValueInclVat,TotalAmount,TotalAmountInclVat,CreatedAt,UpdatedAt,DeletedAt,ProductNumber";
+        return "?page=0&pageSize=1000&fields=ProductGuid,Name,Quantity,Unit,AccountNumber,BaseAmountValue,BaseAmountValueInclVat,TotalAmount,TotalAmountInclVat,CreatedAt,UpdatedAt,DeletedAt,ProductNumber";
     }
 
     @Override

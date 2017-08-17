@@ -3,6 +3,7 @@ package com.previsto.dinero;
 import com.previsto.dinero.model.*;
 import org.springframework.data.domain.Page;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import java.time.LocalDate;
@@ -15,9 +16,20 @@ public class Test {
                 "ZfnZyhqoc3B7q9GDKEAToD0W5xTbnlEwMlf3YIPQE", "148383",
                 "33591216d5184eb39bf8f564f223b9b9",
                 "https://authz.dinero.dk/dineroapi/oauth/token", "https://api.dinero.dk/v1");
-        
+
+        /**List<Contact> contactsCreated = new ArrayList<>();
+        for(int i=0;i<300;i++) {
+            Contact c = new Contact();
+            c.setName("Karl Hansen " + i);
+            c = client.getContactResource().save(c);
+            contactsCreated.add(c);
+        }*/
         List<Contact> contacts = client.getContactResource().findAll();
-        System.out.println(contacts);
+        System.out.println(contacts.size());
+
+        /*for(Contact c : contactsCreated) {
+            client.getContactResource().delete(c);
+        }*/
         /*Contact contact = new Contact();
         contact.setCreditor(true);
         contact.setName("Apaq");
