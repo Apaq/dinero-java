@@ -1,12 +1,17 @@
 package com.previsto.dinero;
 
 import com.previsto.dinero.model.*;
+import org.apache.commons.io.FileUtils;
+import org.springframework.util.FileCopyUtils;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.time.LocalDate;
 
 public class Test {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         
         DineroClient client = new DineroClient("Previsto",
                 "ZfnZyhqoc3B7q9GDKEAToD0W5xTbnlEwMlf3YIPQE", "148383",
@@ -51,6 +56,10 @@ public class Test {
 
         client.getInvoiceResource().book(invoice);
         client.getInvoiceResource().email(invoice.getId());
+
+        InputStream io = client.getInvoiceResource().download(invoice.getId());
+        FileCopyUtils.copy(io, new FileOutputStream("invoice.pdf"));
+        io.close();
 
         invoice = client.getInvoiceResource().get(invoice.getId());
         client.getInvoiceResource().pay(invoice,

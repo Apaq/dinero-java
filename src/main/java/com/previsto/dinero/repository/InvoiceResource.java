@@ -3,6 +3,9 @@ package com.previsto.dinero.repository;
 import com.previsto.dinero.model.BookData;
 import com.previsto.dinero.model.Invoice;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
 import java.net.URI;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -11,6 +14,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.previsto.dinero.model.PaymentData;
+import org.springframework.http.MediaType;
+import org.springframework.http.RequestEntity;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 public class InvoiceResource extends Resource<Invoice>{
@@ -34,6 +40,14 @@ public class InvoiceResource extends Resource<Invoice>{
         URI url = buildUri(id, "/email");
         
         restTemplate.postForEntity(url, null, Void.class);
+    }
+
+    public InputStream download(String id) throws IOException {
+        URI url = buildUri(id);
+
+        RequestEntity req = RequestEntity.get(url).accept(MediaType.APPLICATION_OCTET_STREAM).build();
+        ResponseEntity<org.springframework.core.io.Resource> res = restTemplate.exchange(req, org.springframework.core.io.Resource.class );
+        return res.getBody().getInputStream();
     }
 
     public void pay(Invoice invoice, int depositAccountNumber, LocalDate paymentDate, long amount, String description, String externalReference) {
