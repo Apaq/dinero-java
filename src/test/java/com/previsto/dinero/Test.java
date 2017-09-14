@@ -3,6 +3,10 @@ package com.previsto.dinero;
 import com.previsto.dinero.model.*;
 import org.apache.commons.io.FileUtils;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.data.domain.Page;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -17,9 +21,21 @@ public class Test {
                 "ZfnZyhqoc3B7q9GDKEAToD0W5xTbnlEwMlf3YIPQE", "148383",
                 "33591216d5184eb39bf8f564f223b9b9",
                 "https://authz.dinero.dk/dineroapi/oauth/token", "https://api.dinero.dk/v1");
-        
-        //Page<Contact> contacts = client.getContactResource().findAll(new PageRequest(0, 2));
-        Contact contact = new Contact();
+
+        /**List<Contact> contactsCreated = new ArrayList<>();
+        for(int i=0;i<300;i++) {
+            Contact c = new Contact();
+            c.setName("Karl Hansen " + i);
+            c = client.getContactResource().save(c);
+            contactsCreated.add(c);
+        }*/
+        List<Contact> contacts = client.getContactResource().findAll();
+        System.out.println(contacts.size());
+
+        /*for(Contact c : contactsCreated) {
+            client.getContactResource().delete(c);
+        }*/
+        /*Contact contact = new Contact();
         contact.setCreditor(true);
         contact.setName("Apaq");
         contact.setStreet("Fyensgade 16, 1. th.");
@@ -28,7 +44,7 @@ public class Test {
         contact.setEmail("mic@apaq.dk");
         contact = client.getContactResource().save(contact);
         
-        System.out.println(contact);
+        System.out.println(contact);*/
         
         /*Product product = new Product();
         product.setName("Vinduespolering");
@@ -37,7 +53,7 @@ public class Test {
         //product.setSalesTaxRulesetId(org.getDefaultSalesTaxRulesetId());
         product = client.getProductResource().save(product);*/
         
-        Invoice invoice = new Invoice();
+       /* Invoice invoice = new Invoice();
         invoice.setContactId(contact.getId());
         invoice.setCurrency("DKK");
         InvoiceProductLine line = new InvoiceProductLine();
@@ -46,10 +62,6 @@ public class Test {
         line.setAccountNumber(1000);
         line.setUnit(UnitType.Session);
         line.setQuantity(1);
-        //line.setDiscountValue(0);
-        //line.setDiscountMode(DiscountMode.PercentageDiscount);
-        //line.setProductId(product.getId());
-
         invoice.getProductLines().add(line);
         invoice = client.getInvoiceResource().save(invoice);
         System.out.println(invoice);
@@ -68,9 +80,10 @@ public class Test {
                 1000,
                 "Betaling via Previsto",
                 "previsto-id");
+        System.out.println(invoice);*/
+        
 
-        invoice = client.getInvoiceResource().get(invoice.getId());
-        System.out.println(invoice);
+
         //client.getInvoiceResource().approve(invoice.getId());
         
 

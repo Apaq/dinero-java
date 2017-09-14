@@ -39,7 +39,7 @@ public abstract class Resource<T extends Persistable<String>> {
     }
 
     public List<T> findAll() {
-        return findAll(null).getContent();
+        return findAll(new PageRequest(0, 1000)).getContent();
     }
 
     public Page<T> findAll(PageRequest pageRequest) {
@@ -54,7 +54,7 @@ public abstract class Resource<T extends Persistable<String>> {
 
         UriComponentsBuilder builder = UriComponentsBuilder.fromUri(url);
         if (pageRequest != null) {
-            builder.queryParam("page", pageRequest.getPageNumber() + 1);
+            builder.queryParam("page", pageRequest.getPageNumber());
             builder.queryParam("pageSize", pageRequest.getPageSize());
         }
 

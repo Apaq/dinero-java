@@ -26,5 +26,8 @@ public class RestTemplateHelper {
         
         // Apply paged result interceptor
         restTemplate.getInterceptors().add(new PagedResultInterceptor());
+
+        // Apply Throttle
+        restTemplate.getInterceptors().add(new ThrottleInterceptor());
     }
 }

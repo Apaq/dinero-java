@@ -32,7 +32,7 @@ public class InvoiceResourceTest extends ResourceTestBase<Invoice> {
 
     @Override
     protected String generateExpectedGetQueryParams() {
-        return "?fields=Number,Guid,ContactName,Date,PaymentDate,Description,Currency,Status,MailOutStatus,TotalExclVatInDkk,TotalInclVatInDkk,TotalExclVat,TotalInclVat,CreatedAt,UpdatedAt,DeletedAt";
+        return "?page=0&pageSize=1000&fields=Number,Guid,ContactName,Date,PaymentDate,Description,Currency,Status,MailOutStatus,TotalExclVatInDkk,TotalInclVatInDkk,TotalExclVat,TotalInclVat,CreatedAt,UpdatedAt,DeletedAt";
     }
 
     @Override

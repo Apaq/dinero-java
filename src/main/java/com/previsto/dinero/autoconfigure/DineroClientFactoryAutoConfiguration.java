@@ -21,7 +21,7 @@ public class DineroClientFactoryAutoConfiguration {
     
     @Bean
     public DineroClientFactory dineroClientFactory() {
-        LOG.info("Initializing BilyClientFactory. [serviceUrl={}]", properties.getServiceUrl());
+        LOG.info("Initializing DineroClientFactory. [serviceUrl={}]", properties.getServiceUrl());
         return new DineroClientFactory(properties.getClientId(), properties.getClientSecret(),
                 properties.getAuthUrl(), properties.getServiceUrl());
     }
