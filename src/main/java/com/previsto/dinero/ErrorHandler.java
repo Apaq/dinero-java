@@ -25,8 +25,13 @@ public class ErrorHandler implements ResponseErrorHandler {
     public void handleError(ClientHttpResponse response) throws IOException {
         Class<? extends DineroException> clazz;
 
+        String content = IOUtils.toString(response.getBody());
+
         if (response.getRawStatusCode() >= 500) {
             clazz = ApiException.class;
+        } else if (response.getRawStatusCode() == 400 && content.contains("_grant")) {
+            clazz = AuthenticationException.class;
+            content = "{\"code\": 401, \"message\": \"Unable to acquire grant.\"}";
         } else if (response.getRawStatusCode() == 401 || response.getRawStatusCode() == 403) {
             clazz = AuthenticationException.class;
         } else if (response.getRawStatusCode() == 404) {
@@ -36,7 +41,6 @@ public class ErrorHandler implements ResponseErrorHandler {
             clazz = RequestException.class;
         }
 
-        String content = IOUtils.toString(response.getBody());
         DineroException ex;
         try {
             ex = objectMapper.readValue(content, clazz);

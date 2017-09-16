@@ -41,7 +41,11 @@ public class ErrorTest {
     private DefaultResponseCreator generateUnauthorizedResponse() {
         return withUnauthorizedRequest().body(Util.readResourceFromFile("error_unauthorized.json")).contentType(MediaType.APPLICATION_JSON);
     }
-    
+
+    private DefaultResponseCreator generateUnauthorizedGrantResponse() {
+        return withBadRequest().body(Util.readResourceFromFile("error_unauthorized_grant.json")).contentType(MediaType.APPLICATION_JSON);
+    }
+
     private DefaultResponseCreator generateNotFoundResponse() {
         return withStatus(HttpStatus.NOT_FOUND).body(Util.readResourceFromFile("error_not_found.json")).contentType(MediaType.APPLICATION_JSON);
     }
@@ -101,6 +105,24 @@ public class ErrorTest {
         } catch(AuthenticationException ex) {
             
         }   
+
+    }
+
+    @Test
+    public void testAuthenticationGrantError() {
+        System.out.println("get");
+
+        ContactResource resource = new ContactResource(restTemplate, "http://server/Api");
+
+        mockServer.expect(method(HttpMethod.GET)).andRespond(generateUnauthorizedGrantResponse());
+
+        try {
+            Contact entity = resource.get("232132");
+            mockServer.verify();
+            Assert.fail("Should have thrown exception");
+        } catch(AuthenticationException ex) {
+
+        }
 
     }
     
