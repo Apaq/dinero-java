@@ -16,21 +16,27 @@ import java.time.LocalDate;
 public class Test {
 
     public static void main(String[] args) throws IOException {
-        
+
+        String orgId = "148383";
+        String apiKey = "33591216d5184eb39bf8f564f223b9b9";
+
+
         DineroClient client = new DineroClient("Previsto",
-                "ZfnZyhqoc3B7q9GDKEAToD0W5xTbnlEwMlf3YIPQE", "148383",
-                "33591216d5184eb39bf8f564f223b9b9",
+                "ZfnZyhqoc3B7q9GDKEAToD0W5xTbnlEwMlf3YIPQE", orgId, apiKey,
                 "https://authz.dinero.dk/dineroapi/oauth/token", "https://api.dinero.dk/v1");
 
-        /**List<Contact> contactsCreated = new ArrayList<>();
-        for(int i=0;i<300;i++) {
-            Contact c = new Contact();
-            c.setName("Karl Hansen " + i);
-            c = client.getContactResource().save(c);
-            contactsCreated.add(c);
-        }*/
+        /*Contact c = new Contact();
+        c.setName("Blåbærgrød med Accent grú");
+        c.setStreet("Blåbærvænget 123");
+        c.setZipCode("9000");
+        c.setCity("Ålborg");
+        c = client.getContactResource().save(c);
+
         List<Contact> contacts = client.getContactResource().findAll();
         System.out.println(contacts.size());
+*/
+
+
 
         /*for(Contact c : contactsCreated) {
             client.getContactResource().delete(c);
