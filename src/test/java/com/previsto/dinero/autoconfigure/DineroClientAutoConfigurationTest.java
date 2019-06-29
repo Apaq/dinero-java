@@ -3,11 +3,11 @@ package com.previsto.dinero.autoconfigure;
 import com.previsto.dinero.DineroClient;
 import org.junit.After;
 import org.junit.Test;
+import org.springframework.boot.test.util.TestPropertyValues;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Configuration;
 
 import static org.junit.Assert.*;
-import org.springframework.boot.test.EnvironmentTestUtils;
 
 public class DineroClientAutoConfigurationTest {
 
@@ -38,7 +38,7 @@ public class DineroClientAutoConfigurationTest {
 
     private void load(Class<?> config, String... environment) {
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
-        EnvironmentTestUtils.addEnvironment(applicationContext, environment);
+        TestPropertyValues.of(environment).applyTo(applicationContext);
         applicationContext.register(config);
         applicationContext.register(DineroClientAutoConfiguration.class, DineroClientFactoryAutoConfiguration.class);
         applicationContext.refresh();
