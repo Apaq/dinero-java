@@ -20,8 +20,8 @@
   </scm>
 
     <properties>
-        <spring.framework.version>5.1.8</spring.framework.version>
-        <spring.boot.version>2.1.2</spring.boot.version>
+        <spring.framework.version>5.1.8.RELEASE</spring.framework.version>
+        <spring.boot.version>2.1.2.RELEASE</spring.boot.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
