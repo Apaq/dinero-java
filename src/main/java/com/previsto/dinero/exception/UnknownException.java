@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class UnknownException extends DineroException {
 
     @JsonCreator
-    public UnknownException(@JsonProperty(value = "Message") String message) {
+    public UnknownException(@JsonProperty(value = "message") String message) {
         super(message);
     }
 
