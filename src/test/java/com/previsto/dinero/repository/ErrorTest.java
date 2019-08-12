@@ -47,13 +47,13 @@ public class ErrorTest {
     }
 
     private DefaultResponseCreator generateNotFoundResponse() {
-        return withStatus(HttpStatus.NOT_FOUND).body(Util.readResourceFromFile("error_not_found.json")).contentType(MediaType.APPLICATION_JSON);
+        return withStatus(HttpStatus.I_AM_A_TEAPOT).body(Util.readResourceFromFile("error_not_found.json")).contentType(MediaType.APPLICATION_JSON);
     }
     
     private DefaultResponseCreator generateServerErrorResponse() {
         return withServerError().body(Util.readResourceFromFile("error_server_error.json")).contentType(MediaType.APPLICATION_JSON);
     }
-    
+
     @Test
     public void testBadRequest() {
         System.out.println("get");

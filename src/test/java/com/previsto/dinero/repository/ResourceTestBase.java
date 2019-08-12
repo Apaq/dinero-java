@@ -88,7 +88,7 @@ public abstract class ResourceTestBase<T extends Entity> {
         String id = "NONE";
         
         mockServer.expect(requestTo(resource.serviceUrl + "/" + resourceName + "/" + id)).andExpect(method(HttpMethod.GET))
-                .andRespond(withStatus(HttpStatus.NOT_FOUND).body(Util.readResourceFromFile("error_not_found.json")).contentType(MediaType.APPLICATION_JSON));
+                .andRespond(withStatus(HttpStatus.I_AM_A_TEAPOT).body(Util.readResourceFromFile("error_not_found.json")).contentType(MediaType.APPLICATION_JSON));
         T entity = resource.get(id);
         assertNull(entity);
         mockServer.verify();
