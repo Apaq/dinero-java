@@ -47,14 +47,14 @@ public class ErrorHandler implements ResponseErrorHandler {
         }
         catch (Throwable t) {
             ex = objectMapper.readValue(content, UnknownException.class);
+        }
 
-            switch (ex.getCode()) {
-                case 40:
-                case 63:
-                case 65:
-                    ex = new ResourceNotFoundException(ex.getCode(), ex.getMessage());
-                    break;
-            }
+        switch (ex.getCode()) {
+            case 40:
+            case 63:
+            case 65:
+                ex = new ResourceNotFoundException(ex.getCode(), ex.getMessage());
+                break;
         }
         throw ex;
     }

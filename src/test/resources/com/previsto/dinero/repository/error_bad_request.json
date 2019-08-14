@@ -8,6 +8,7 @@
     }
   ],
   "validationErrors": {
-
-  }
+    "message": "bla bla"
+  },
+  "weirdProperty": {}
 }

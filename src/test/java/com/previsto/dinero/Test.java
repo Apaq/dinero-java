@@ -25,6 +25,20 @@ public class Test {
                 "ZfnZyhqoc3B7q9GDKEAToD0W5xTbnlEwMlf3YIPQE", orgId, apiKey,
                 "https://authz.dinero.dk/dineroapi/oauth/token", "https://api.dinero.dk/v1");
 
+        Contact contact = client.getContactResource().findAll().get(0);
+        Invoice invoice = new Invoice();
+        invoice.setContactId(contact.getId());
+        invoice.setCurrency("DKK");
+        InvoiceProductLine line = new InvoiceProductLine();
+        line.setBaseAmountValue(200);
+        line.setDescription("Test");
+        line.setAccountNumber(1000);
+        line.setUnit(UnitType.Session);
+        line.setQuantity(1);
+        invoice.getProductLines().add(line);
+        invoice = client.getInvoiceResource().save(invoice);
+        System.out.println(invoice);
+
         /*Contact c = new Contact();
         c.setName("Blåbærgrød med Accent grú");
         c.setStreet("Blåbærvænget 123");
