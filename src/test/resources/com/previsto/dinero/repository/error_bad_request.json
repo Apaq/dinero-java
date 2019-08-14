@@ -1,5 +1,5 @@
 {
-  "code": 40,
+  "code": 45,
   "message": "Invoices must have at least one invoice line",
   "languageSpecificMessages": [
     {
