@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.previsto.dinero.model.PaymentData;
+import com.previsto.dinero.model.SendEmailRequest;
 import org.springframework.http.MediaType;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
@@ -35,11 +36,15 @@ public class InvoiceResource extends Resource<Invoice>{
         
         restTemplate.postForEntity(url, bookData, Void.class);
     }
-    
+
     public void email(String id) {
+        this.email(id, new SendEmailRequest());
+    }
+
+    public void email(String id, SendEmailRequest sendEmailRequest) {
         URI url = buildUri(id, "/email");
         
-        restTemplate.postForEntity(url, null, Void.class);
+        restTemplate.postForEntity(url, sendEmailRequest, Void.class);
     }
 
     public InputStream download(String id) throws IOException {
