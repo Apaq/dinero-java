@@ -26,10 +26,10 @@ import static org.springframework.test.web.client.response.MockRestResponseCreat
 
 public abstract class ResourceTestBase<T extends Entity> {
 
-    private MockRestServiceServer mockServer;
-    private final Resource<T> resource;
-    private final RestTemplate restTemplate;
-    private final String resourceName;
+    protected MockRestServiceServer mockServer;
+    protected final Resource<T> resource;
+    protected final RestTemplate restTemplate;
+    protected final String resourceName;
     private Class type;
 
     public ResourceTestBase(Resource<T> resource, Class type) {
