@@ -39,7 +39,7 @@ public abstract class Resource<T extends Persistable<String>> {
     }
 
     public List<T> findAll() {
-        return findAll(new PageRequest(0, 1000)).getContent();
+        return findAll(PageRequest.of(0, 1000)).getContent();
     }
 
     public Page<T> findAll(PageRequest pageRequest) {
