@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.previsto.dinero.model.InvoiceStatus;
+import com.previsto.dinero.model.SendEmailResponse;
+import org.junit.Test;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.client.response.DefaultResponseCreator;
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;
@@ -64,6 +67,28 @@ public class InvoiceResourceTest extends ResourceTestBase<Invoice> {
         }
 
         throw new RuntimeException("Unexpected contact entity [id=" + entity.getId() + "]");
+    }
+
+    @Test
+    public void testSendEmail() {
+        System.out.println("sendEmail");
+        String id = "123";
+        mockServer.expect(requestTo(resource.serviceUrl + "/" + resourceName + "/" + id + "/email")).andExpect(method(HttpMethod.POST))
+                .andRespond(withSuccess("{\n" +
+                        "  \"Recipients\": [\n" +
+                        "    {\n" +
+                        "      \"Email\": \"test@previsto.com\"\n" +
+                        "    },\n" +
+                        "    {\n" +
+                        "      \"Email\": \"test@previsto.com\"\n" +
+                        "    }\n" +
+                        "  ]\n" +
+                        "}", MediaType.APPLICATION_JSON));
+
+        InvoiceResource invoiceResource = (InvoiceResource) resource;
+        SendEmailResponse response = invoiceResource.email(id);
+        assertEquals("test@previsto.com", response.getRecipients().get(0).getEmail());
+        mockServer.verify();
     }
 
 }
