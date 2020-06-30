@@ -38,7 +38,7 @@ public class Invoice extends ArchivableEntity implements Entity {
     private LocalDate date;
     private List<InvoiceProductLine> productLines = new ArrayList<>();
     private String address;
-    @JsonProperty("TimeStamp") // <-- Observe the extreme lazyness of Dinero API developers
+    @JsonProperty("TimeStamp")
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private String timestamp;
 

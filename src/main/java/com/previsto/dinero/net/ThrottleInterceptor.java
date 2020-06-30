@@ -10,14 +10,14 @@ import org.springframework.http.client.ClientHttpResponse;
 import java.io.IOException;
 
 /**
- * This interceptor makes sure we don't do more than one request per second. But it is global.
- * We should really be doing this by api key.
+ * This interceptor makes sure we don't do more than one request per second.
  */
 public class ThrottleInterceptor implements ClientHttpRequestInterceptor {
 
     private static final Logger LOG = LoggerFactory.getLogger(ThrottleInterceptor.class);
-    private static long lastRequest = -1;
     private static final long TIME_BETWEEN_REQUESTS = 500;
+
+    private long lastRequest = -1;
 
     @Override
     public synchronized ClientHttpResponse intercept(HttpRequest request, byte[] body, ClientHttpRequestExecution execution) throws IOException {

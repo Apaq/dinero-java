@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.previsto.dinero.model.InvoiceProductLine;
 import com.previsto.dinero.model.InvoiceStatus;
 import com.previsto.dinero.model.SendEmailResponse;
 import org.junit.Test;
@@ -42,13 +43,29 @@ public class InvoiceResourceTest extends ResourceTestBase<Invoice> {
     protected String generateSingularId() {
         return "cSHBqWWITexZvQy29lqpYg";
     }
-    
+
+    @Override
+    protected void prepareForSave(Invoice entity) {
+        InvoiceProductLine line1 = new InvoiceProductLine();
+        line1.setDescription("qwerty");
+
+        InvoiceProductLine line2 = new InvoiceProductLine();
+        line2.setProductId("prod_1");
+        line2.setDescription("qwerty");
+
+        entity.getProductLines().add(line1);
+        entity.getProductLines().add(line2);
+    }
+
     @Override
     protected List<RequestMatcher> generateExpectedSaveRequest() {
         List<RequestMatcher> matchers = new ArrayList<>();
+        matchers.add(method(HttpMethod.PUT));
         matchers.add(jsonPath("$.invoice.isPaid").doesNotExist());
         matchers.add(jsonPath("$.invoice.paymentTermsDays").doesNotExist());
         matchers.add(jsonPath("$.invoice.paymentTermsMode").doesNotExist());
+        matchers.add(jsonPath("$.ProductLines[0].Description").exists());
+        matchers.add(jsonPath("$.ProductLines[1].Description").doesNotExist());
         return matchers;
     }
 

@@ -5,6 +5,8 @@ import com.previsto.dinero.model.Contact;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.client.response.DefaultResponseCreator;
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;
@@ -41,11 +43,15 @@ public class ContactResourceTest extends ResourceTestBase<Contact> {
     @Override
     protected List<RequestMatcher> generateExpectedSaveRequest() {
         List<RequestMatcher> matchers = new ArrayList<>();
-        matchers.add(jsonPath("$.contact.isArchived").value(false));
-        matchers.add(jsonPath("$.contact.name").isEmpty());
-        matchers.add(jsonPath("$.contact.paymentTermsDays").doesNotExist());
-        matchers.add(jsonPath("$.contact.paymentTermsMode").doesNotExist());
+        matchers.add(method(HttpMethod.PUT));
+        //matchers.add(content().string(""));
+        matchers.add(jsonPath("$.Creditor").value(false));
         return matchers;
+    }
+
+    @Override
+    protected void prepareForSave(Contact entity) {
+        entity.setCreditor(false);
     }
 
     @Override

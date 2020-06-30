@@ -53,6 +53,21 @@
       "Unit": "parts",
       "Discount": 0,
       "LineType": "Product"
+    },
+    {
+      "AccountName": "Salg af varer/ydelser m/moms",
+      "BaseAmountValue": 0,
+      "BaseAmountValueInclVat": 0,
+      "TotalAmount": 0,
+      "TotalAmountInclVat": 0,
+      "ProductGuid": "13213123123123123",
+      "Description": "",
+      "Comments": "",
+      "Quantity": 1,
+      "AccountNumber": 1000,
+      "Unit": "parts",
+      "Discount": 0,
+      "LineType": "Product"
     }
   ],
   "Address": null

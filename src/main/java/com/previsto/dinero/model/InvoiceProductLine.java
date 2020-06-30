@@ -1,7 +1,10 @@
 package com.previsto.dinero.model;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+@JsonFilter("InvoiceProductLineFilter")
 public class InvoiceProductLine {
 
     private String accountName;
@@ -11,6 +14,7 @@ public class InvoiceProductLine {
     private double totalAmountInlVat;
     @JsonProperty("ProductGuid")
     private String productId;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String description;
     private String comments;
     private double quantity;

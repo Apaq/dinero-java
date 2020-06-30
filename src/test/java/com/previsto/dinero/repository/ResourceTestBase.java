@@ -5,6 +5,7 @@ import com.previsto.dinero.ErrorHandler;
 import java.util.List;
 
 import com.previsto.dinero.model.Entity;
+import com.previsto.dinero.model.InvoiceProductLine;
 import com.previsto.dinero.net.RestTemplateHelper;
 import org.junit.Before;
 import org.junit.Test;
@@ -55,6 +56,10 @@ public abstract class ResourceTestBase<T extends Entity> {
     
     protected abstract void doCheckEntity(T entity);
 
+    protected void prepareForSave(T entity) {
+
+    }
+
     @Test
     public void testFindAll() {
         System.out.println("findAll");
@@ -101,8 +106,14 @@ public abstract class ResourceTestBase<T extends Entity> {
         
         T entity = (T) type.newInstance();
         entity.setId(id);
-        mockServer.expect(requestTo(resource.serviceUrl + "/" + resourceName + "/" + id)).andExpect(method(HttpMethod.PUT))
-                .andRespond(withSuccess());
+
+        prepareForSave(entity);
+
+        ResponseActions saveRequest = mockServer.expect(requestTo(resource.serviceUrl + "/" + resourceName + "/" + id));
+        for(RequestMatcher m : generateExpectedSaveRequest()) {
+            saveRequest = saveRequest.andExpect(m);
+        }
+        saveRequest.andRespond(withSuccess());
         
         mockServer.expect(requestTo(resource.serviceUrl + "/" + resourceName + "/" + id)).andExpect(method(HttpMethod.GET))
                 .andRespond(generateExpectedGetResponse());
@@ -114,8 +125,6 @@ public abstract class ResourceTestBase<T extends Entity> {
 
     
     public static RestTemplate buildRestTemplate() {
-        RestTemplate rt = new RestTemplate();
-        //RestTemplateHelper.configureForBillyJargon(rt);
-        return rt;
+        return new RestTemplate();
     }
 }
