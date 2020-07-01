@@ -14,7 +14,6 @@ public class InvoiceProductLine {
     private double totalAmountInlVat;
     @JsonProperty("ProductGuid")
     private String productId;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String description;
     private String comments;
     private double quantity;

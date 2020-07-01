@@ -64,8 +64,12 @@ public class InvoiceResourceTest extends ResourceTestBase<Invoice> {
         matchers.add(jsonPath("$.invoice.isPaid").doesNotExist());
         matchers.add(jsonPath("$.invoice.paymentTermsDays").doesNotExist());
         matchers.add(jsonPath("$.invoice.paymentTermsMode").doesNotExist());
-        matchers.add(jsonPath("$.ProductLines[0].Description").exists());
-        matchers.add(jsonPath("$.ProductLines[1].Description").doesNotExist());
+        matchers.add(jsonPath("$.ProductLines[0].ProductGuid").hasJsonPath());
+        matchers.add(jsonPath("$.ProductLines[0].ProductGuid").isEmpty());
+        matchers.add(jsonPath("$.ProductLines[0].Description").value("qwerty"));
+        matchers.add(jsonPath("$.ProductLines[1].ProductGuid").isNotEmpty());
+        matchers.add(jsonPath("$.ProductLines[1].Description").hasJsonPath());
+        matchers.add(jsonPath("$.ProductLines[1].Description").isEmpty());
         return matchers;
     }
 
