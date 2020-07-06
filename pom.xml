@@ -26,6 +26,7 @@
         <repository>
             <id>github</id>
             <name>Github Packages</name>
+            <url>https://maven.pkg.github.com/Apaq/dinero-java</url>
         </repository>
     </distributionManagement>
 
