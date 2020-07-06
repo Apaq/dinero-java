@@ -39,7 +39,7 @@ dinero:
 DineroExample.java
 
 ```java
-import com.previsto.dinero.model.Contact;
+import Contact;
 
 @SpringBootApplication
 public class DineroExample {
