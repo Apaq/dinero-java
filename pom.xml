@@ -1,23 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.previsto</groupId>
     <artifactId>dinero-java</artifactId>
     <version>1.1.10-SNAPSHOT</version>
     <packaging>jar</packaging>
-    
-    <parent>
-        <groupId>dk.apaq</groupId>
-        <artifactId>parent</artifactId>
-        <version>1.3.0</version>
-    </parent>
-    
+
     <scm>
         <connection>scm:git:https://github.com/Previsto/dinero-java.git</connection>
         <developerConnection>scm:git:git@github.com:Previsto/dinero-java.git</developerConnection>
         <url>https://github.com/Previsto/dinero-java</url>
-      <tag>HEAD</tag>
-  </scm>
+        <tag>HEAD</tag>
+    </scm>
 
     <properties>
         <spring.framework.version>5.2.5.RELEASE</spring.framework.version>
@@ -26,7 +21,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
-    
+
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -126,20 +121,6 @@
         </plugins>
     </reporting>
 
-    
-    <distributionManagement>
-        <repository>
-            <id>aws-release</id>
-            <name>Apaq Release Repository</name>
-            <url>s3://apaq-repository/release</url>
-        </repository>
-        <snapshotRepository>
-            <id>aws-snapshot</id>
-            <name>Apaq Snapshot Repository</name>
-            <url>s3://apaq-repository/snapshot</url>
-        </snapshotRepository>
-    </distributionManagement>
-    
     <build>
         <extensions>
             <extension>
