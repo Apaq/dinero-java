@@ -29,6 +29,10 @@ public class Account implements Entity {
         return accountNumber;
     }
 
+    /**
+     * Account number e.g. 1000 or 55000
+     * @param accountNumber
+     */
     public void setAccountNumber(int accountNumber) {
         this.accountNumber = accountNumber;
     }
@@ -37,6 +41,10 @@ public class Account implements Entity {
         return name;
     }
 
+    /**
+     * Name of the account
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
