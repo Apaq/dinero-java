@@ -8,9 +8,9 @@
     <packaging>jar</packaging>
 
     <scm>
-        <connection>scm:git:https://github.com/Previsto/dinero-java.git</connection>
-        <developerConnection>scm:git:git@github.com:Previsto/dinero-java.git</developerConnection>
-        <url>https://github.com/Previsto/dinero-java</url>
+        <connection>scm:git:https://github.com/Apaq/dinero-java.git</connection>
+        <developerConnection>scm:git:git@github.com:Apaq/dinero-java.git</developerConnection>
+        <url>https://github.com/Apaq/dinero-java</url>
         <tag>HEAD</tag>
     </scm>
 
@@ -144,7 +144,7 @@
                 <version>0.7.5.201505241946</version>
                 <configuration>
                     <excludes>
-                        <exclude>com/previsto/dinero/model/**</exclude>
+                        <exclude>dk/apaq/dinero/model/**</exclude>
                     </excludes>
                 </configuration>
                 <executions>
