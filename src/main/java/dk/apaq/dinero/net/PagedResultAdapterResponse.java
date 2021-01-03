@@ -17,7 +17,7 @@ public class PagedResultAdapterResponse extends AbstractClientHttpResponse {
 
     private static final JsonFactory JSON_FACTORY = new JsonFactory();
     private static final String ENTITIES_FIELD = "Collection";
-    private static final String PAGINATION_FIELD = "Count";
+    private static final String PAGINATION_FIELD = "Pagination";
 
     private final ClientHttpResponse wrappedResponse;
     private final HttpHeaders headers;
@@ -33,9 +33,8 @@ public class PagedResultAdapterResponse extends AbstractClientHttpResponse {
         while (jParser.nextToken() != JsonToken.END_OBJECT) {
             String fieldname = jParser.getCurrentName();
             if (PAGINATION_FIELD.equals(fieldname)) {
-                // Todo: Read pagination
                 jParser.nextToken();
-                headers.add("Count", jParser.getText());
+                headers.add("Count", parseCount(jParser));
             }
 
             if (ENTITIES_FIELD.equals(fieldname)) {
@@ -44,6 +43,18 @@ public class PagedResultAdapterResponse extends AbstractClientHttpResponse {
             }
         }
         jGenerator.flush();
+    }
+
+    private String parseCount(JsonParser jParser) throws IOException {
+        String count = "";
+        while(jParser.nextToken() != JsonToken.END_OBJECT) {
+            String fieldname = jParser.getCurrentName();
+            if ("Result".equals(fieldname)) {
+                jParser.nextToken();
+                count = jParser.getText();
+            }
+        }
+        return count;
     }
 
     @Override
