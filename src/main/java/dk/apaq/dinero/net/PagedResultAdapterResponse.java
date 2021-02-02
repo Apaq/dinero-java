@@ -49,7 +49,7 @@ public class PagedResultAdapterResponse extends AbstractClientHttpResponse {
         String count = "";
         while(jParser.nextToken() != JsonToken.END_OBJECT) {
             String fieldname = jParser.getCurrentName();
-            if ("Result".equals(fieldname)) {
+            if ("ResultWithoutFilter".equals(fieldname)) {
                 jParser.nextToken();
                 count = jParser.getText();
             }
